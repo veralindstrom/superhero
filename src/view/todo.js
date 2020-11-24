@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import firebase from '../util/firebase';
 
 function Todo({ todo }) {
-    const [complete, setComplete] = useState(false);
+    const [complete, setComplete] = useState(todo.complete);
 
     const deleteTodo = () => {
         firebase.database().ref('Todo').child(todo.id).remove();
@@ -14,8 +14,7 @@ function Todo({ todo }) {
                 complete: !todo.complete
             }
         );
-        console.log(todo.complete);
-        if (todo.complete) setComplete(true);
+        if (!todo.complete) setComplete(true);
         else setComplete(false);
     }
 
@@ -23,7 +22,7 @@ function Todo({ todo }) {
         <div className="todo">
             <h2>{todo.title}</h2>
             <button onClick={deleteTodo}>Delete</button>
-            <button onClick={completeTodo} className={complete ? "completedBtn" : "notCompletedBtn"}>Completed</button>
+            <button className={complete ? "completedBtn" : "notCompletedBtn"} onClick={completeTodo}>Completed</button>
         </div>
     );
 };
