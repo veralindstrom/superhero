@@ -1,5 +1,7 @@
 import React from 'react';
 import Data from '../model/Data';
+import SuperheroSource from './SuperheroSource';
+
 
 const Hero = ({ handleLogOut }) => {
 
@@ -10,6 +12,7 @@ const Hero = ({ handleLogOut }) => {
                 <button className="logoutBtn" onClick={handleLogOut}>Logout</button>
             </nav>
             <Data />
+            <SuperheroSource />
         </section>
     );
 };
