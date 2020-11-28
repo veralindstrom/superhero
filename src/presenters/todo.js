@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { db } from "../util/firebase";
+import fire from "../util/fireb";
 
 function Todo({ todo }) {
     const [complete, setComplete] = useState(!todo.complete);
 
     const deleteTodo = () => {
-        db.ref('Todo').child(todo.id).remove();
+        fire.database().ref('Todo').child(todo.id).remove();
     }
 
     const completeTodo = () => {
-        db.ref('Todo').child(todo.id).update(
+        fire.database().ref('Todo').child(todo.id).update(
             {
                 complete: !todo.complete
             }

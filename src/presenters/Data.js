@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { db } from "../util/firebase";
+import fire from "../util/fireb";
 import '../css/App.css';
 import Form from '../view/Form';
 import TodoList from '../view/TodoList';
 
 const Data = () => {
-    const todoRef = db.ref('Todo');
     const [title, setTitle] = useState("");
     const [todoList, setTodoList] = useState();
 
     useEffect(() => {
-        todoRef.on('value', (snapshot) => {
-            const todos = snapshot.val();
-            const todoArr = [];
-            for (let id in todos) {
-                todoArr.push({ id, ...todos[id] });
-            }
-            setTodoList(todoArr);
-        });
+        const todoRef = fire.database().ref('Todo');
+        let isSubscribed = true;
+        if(isSubscribed){
+            todoRef.on('value', (snapshot) => {
+                const todos = snapshot.val();
+                const todoArr = [];
+                for (let id in todos) {
+                    todoArr.push({ id, ...todos[id] });
+                }
+                setTodoList(todoArr);
+            });
+        }
+        return () => isSubscribed = false;
     }, []);
 
     const clearInput = () => {
@@ -25,6 +29,7 @@ const Data = () => {
     }
 
     const createTodo = () => {
+        const todoRef = fire.database().ref('Todo');
         const todo = {
             title: title,
             complete: false

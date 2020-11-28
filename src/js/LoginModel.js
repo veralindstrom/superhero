@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth } from "../util/firebase";
+import fire from "../util/fireb";
 import LoginView from '../view/LoginView';
 import Home from '../presenters/home';
 import '../css/App.css';
@@ -24,7 +24,8 @@ const LoginModel = () => {
 
   const handleLogin = () => {
     clearErrors();
-    auth
+    fire
+      .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(err => {
         switch (err.code) {
@@ -37,13 +38,16 @@ const LoginModel = () => {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+          default:
+            
         }
       });
   };
 
   const handleSignUp = () => {
     clearErrors();
-    auth
+    fire
+      .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch(err => {
         switch (err.code) {
@@ -55,16 +59,18 @@ const LoginModel = () => {
           case "auth/weak-password":
             setPasswordError(err.message);
             break;
+          default:
+
         }
       });
   };
 
   const handleLogOut = () => {
-    auth.signOut();
+    fire.auth().signOut();
   };
 
   const authListener = () => {
-    auth.onAuthStateChanged(user => {
+    fire.auth().onAuthStateChanged(user => {
       if (user) {
         clearInput();
         setUser(user);

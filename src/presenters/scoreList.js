@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { auth, db } from "../util/firebase";
+import fire from "../util/fireb";
 import '../css/App.css';
 import ScoreView from '../view/ScoreView';
 
@@ -8,8 +8,8 @@ import ScoreView from '../view/ScoreView';
     const [scoreList, setScoreList] = useState();
 
     useEffect(() => {
-      const user = auth.currentUser;
-      const dbref = db.ref(`all_scores/${user.uid}`);
+      const user = fire.auth().currentUser;
+      const dbref = fire.database().ref(`all_scores/${user.uid}`);
       let isSubscribed = true;
 
       if(isSubscribed){
@@ -32,8 +32,8 @@ import ScoreView from '../view/ScoreView';
     }
 
     const createScore = () => {
-      const user = auth.currentUser;
-      const dbref = db.ref(`all_scores/${user.uid}`);
+      const user = fire.auth().currentUser;
+      const dbref = fire.database().ref(`all_scores/${user.uid}`);
       const sc = {
           score: score,
       };
