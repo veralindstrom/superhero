@@ -1,9 +1,10 @@
 import React from 'react';
-import Data from '../model/Data';
-import SuperheroSource from './SuperheroSource';
+import Data from './Data';
+import ScoreList from './scoreList';
+import SuperheroSource from '../js/SuperheroSource';
 
 
-const Hero = ({ handleLogOut }) => {
+const Home = ({ handleLogOut }) => {
 
     return (
         <section className="hero">
@@ -12,9 +13,10 @@ const Hero = ({ handleLogOut }) => {
                 <button className="logoutBtn" onClick={handleLogOut}>Logout</button>
             </nav>
             <Data />
+            <ScoreList/>
             <SuperheroSource />
         </section>
     );
 };
 
-export default Hero;
+export default Home;

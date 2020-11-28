@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import firebase from '../util/firebase';
+import { db } from "../util/firebase";
 import '../css/App.css';
-import Form from '../components/Form';
-import TodoList from '../components/TodoList';
+import Form from '../view/Form';
+import TodoList from '../view/TodoList';
 
 const Data = () => {
-    const todoRef = firebase.database().ref('Todo');
+    const todoRef = db.ref('Todo');
     const [title, setTitle] = useState("");
     const [todoList, setTodoList] = useState();
 
@@ -16,7 +16,6 @@ const Data = () => {
             for (let id in todos) {
                 todoArr.push({ id, ...todos[id] });
             }
-            console.log(todoArr);
             setTodoList(todoArr);
         });
     }, []);

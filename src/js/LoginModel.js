@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
-import fire from '../util/firebase';
-import Login from '../components/Login';
-import Hero from '../components/Hero';
+import { auth } from "../util/firebase";
+import LoginView from '../view/LoginView';
+import Home from '../presenters/home';
 import '../css/App.css';
 
-const App = () => {
+const LoginModel = () => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,8 +24,7 @@ const App = () => {
 
   const handleLogin = () => {
     clearErrors();
-    fire
-      .auth()
+    auth
       .signInWithEmailAndPassword(email, password)
       .catch(err => {
         switch (err.code) {
@@ -45,8 +43,7 @@ const App = () => {
 
   const handleSignUp = () => {
     clearErrors();
-    fire
-      .auth()
+    auth
       .createUserWithEmailAndPassword(email, password)
       .catch(err => {
         switch (err.code) {
@@ -63,11 +60,11 @@ const App = () => {
   };
 
   const handleLogOut = () => {
-    fire.auth().signOut();
+    auth.signOut();
   };
 
   const authListener = () => {
-    fire.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         clearInput();
         setUser(user);
@@ -82,25 +79,25 @@ const App = () => {
 
   return (
     <div className="App">
-      {user ? (
-        <div>
-          <Hero handleLogOut={handleLogOut} />
-        </div>
-      ) : (
-          <Login
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            handleLogin={handleLogin}
-            handleSignUp={handleSignUp}
-            hasAccount={hasAccount}
-            setHasAccount={setHasAccount}
-            emailError={emailError}
-            passwordError={passwordError}
-          />)}
-    </div>
+    {user ? (
+      <div>
+        <Home handleLogOut={handleLogOut} />
+      </div>
+    ) : (
+        <LoginView
+    email={email}
+    setEmail={setEmail}
+    password={password}
+    setPassword={setPassword}
+    handleLogin={handleLogin}
+    handleSignUp={handleSignUp}
+    hasAccount={hasAccount}
+    setHasAccount={setHasAccount}
+    emailError={emailError}
+    passwordError={passwordError}
+     />)}
+  </div>
   );
 }
 
-export default App;
+export default LoginModel;

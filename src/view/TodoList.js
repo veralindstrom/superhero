@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from '../view/todo';
+import Todo from '../presenters/todo';
 
 const TodoList = (props) => {
     const {
@@ -10,7 +10,8 @@ const TodoList = (props) => {
         <center><div className="todoList">
             <h1>Todos:</h1>
             <center>{todoList ? todoList.map((todo, index) => <Todo key={index} todo={todo} />) : ''}</center>
-        </div></center>
+        </div>
+        </center>
     );
 };
 
