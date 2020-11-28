@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { auth, db } from "../util/firebase";
+import fire from "../util/fireb";
 
 function Score({ score }) {
-    const [user,] = useState(auth.currentUser);
-    const ref = db.ref(`all_scores/${user.uid}`);
+    const [user,] = useState(fire.auth().currentUser);
+    const ref = fire.database().ref(`all_scores/${user.uid}`);
 
     const deleteScore = () => {
         ref.child(score.id).remove();
