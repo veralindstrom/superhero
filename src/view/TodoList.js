@@ -5,7 +5,7 @@ const TodoList = (props) => {
     const {
         todoList
     } = props;
-
+    
     return (
         <center><div className="todoList">
             <h1>Todos:</h1>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fire from "../util/fireb";
+import fire from "../util/firebase";
 import LoginView from '../view/LoginView';
 import Home from '../presenters/home';
 import '../css/App.css';

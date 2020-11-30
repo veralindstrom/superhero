@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import fire from "../util/fireb";
+import fire from "../util/firebase";
 import '../css/App.css';
 import Form from '../view/Form';
 import TodoList from '../view/TodoList';
@@ -19,6 +19,8 @@ const Data = () => {
                     todoArr.push({ id, ...todos[id] });
                 }
                 setTodoList(todoArr);
+                console.log("todoArr: ");
+                console.log(todoArr);
             });
         }
         return () => isSubscribed = false;
