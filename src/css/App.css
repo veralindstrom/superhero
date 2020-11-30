@@ -198,3 +198,18 @@ button {
   padding: 8px 0;
   background: #3a2b58;
 }
+
+.questionBox {
+  width: 100%;
+  padding: 8px;
+}
+
+.selectedBtn {
+  background: linear-gradient(to right, #d6a6ac, #789357) !important;
+}
+
+.unselectedBtn {
+  padding: 8px;
+  border: 2px solid rgb(55, 26, 102);
+  cursor: pointer;
+}
