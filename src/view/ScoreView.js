@@ -9,6 +9,10 @@ const ScoreView = (props) => {
         scoreList
     } = props;
 
+    const scoreListArr = [];
+    scoreList ? scoreList.map((score) => scoreListArr.push(score.score)): console.log('scoreList not defined');
+    scoreListArr.sort((a, b) => {return b-a});
+
     return (
         <div>
             <div className="addTodo">
@@ -16,8 +20,8 @@ const ScoreView = (props) => {
                 <button onClick={createScore}>Add Score</button>
             </div>
             <center><div className="todoList">
-                <h1>Scores:</h1>
-                <center>{scoreList ? scoreList.map((score, index) => <Score key={index} score={score} />) : ''}</center>
+                <h1>Your scores:</h1>
+                <center>{scoreListArr.map((score, index) => <Score key={index} score={score} />)}</center>
             </div></center>
         </div>
     );

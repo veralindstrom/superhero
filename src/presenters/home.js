@@ -2,6 +2,7 @@ import React from 'react';
 import Data from './Data';
 import ScoreList from './scoreList';
 import SuperheroSource from '../js/SuperheroSource';
+import AllScores from './allScores';
 
 
 const Home = ({ handleLogOut }) => {
@@ -14,6 +15,7 @@ const Home = ({ handleLogOut }) => {
             </nav>
             <Data />
             <ScoreList/>
+            <AllScores/>
             <SuperheroSource />
         </section>
     );

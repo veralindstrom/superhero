@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fire from "../util/fireb";
+import fire from "../util/firebase";
 
 function Todo({ todo }) {
     const [complete, setComplete] = useState(!todo.complete);
