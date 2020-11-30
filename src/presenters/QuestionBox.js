@@ -3,7 +3,7 @@ import '../css/App.css';
 
 const QuestionBox = ({question, options, selected}) => {
     const[answer, setAnswer] = useState(options);
-    const[isSelected, setIsSelected] = useState(false);
+    const[isSelected, setIsSelected] = useState('');
 
     return(
         <div className="questionBox">
@@ -14,12 +14,11 @@ const QuestionBox = ({question, options, selected}) => {
                     {option}
                 </p>
             ))}*/}
+
             {answer.map((text, index) => (
-                <button key={index} className={isSelected ? "selectedBtn" : "unselectedBtn"} onClick={() => {
+                <button key={index} className={isSelected === index ? "selectedBtn" : "unselectedBtn"} onClick={() => {
                     //setAnswer([text]);
-                    setIsSelected(prevState => ({
-                        isSelected: !prevState.isSelected,
-                    }));
+                    setIsSelected(index);
                     selected(text);
                 }}>
                     {text}
