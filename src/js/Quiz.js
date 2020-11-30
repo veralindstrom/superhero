@@ -11,6 +11,7 @@ class Quiz extends Component {
         responses: 0
     };
 
+
     getQuestions = () => {
         QuizData().then(question => {
             this.setState({
@@ -20,6 +21,7 @@ class Quiz extends Component {
     };
 
     computeAnswer = (userAnswer, correctAnswer) => {
+        console.log(userAnswer);
         if(userAnswer === correctAnswer) {
             this.setState({
                 score: this.state.score + 1
