@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
+import { HeroState } from '../Context/HeroContext';
 import fire from '../util/firebase';
 import Login from '../components/Login';
-import Hero from '../components/Hero';
+import Hero from '../components/Hero/Hero';
 import '../css/App.css';
 
 const App = () => {
