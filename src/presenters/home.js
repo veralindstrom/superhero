@@ -16,7 +16,7 @@ const Home = ({ handleLogOut }) => {
             <Data />
             <ScoreList/>
             <AllScores/>
-            <Quiz/>
+            <Quiz />
             <SuperheroSource />
         </section>
     );
