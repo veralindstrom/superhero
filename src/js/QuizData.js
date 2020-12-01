@@ -32,7 +32,7 @@ const Quiz = [
     {
       id: 5,
       question: `correct?`,
-      options: [`wrong`, `wrong`, `right`],
+      options: [`wrong`, `bong`, `right`],
       answer: `right`
     },
     {
@@ -46,11 +46,40 @@ const Quiz = [
       question: `i wanna?`,
       options: [`what`, `rock`, `stop`],
       answer: `rock`
-    }
+    },
+    {
+      id: 8,
+      question: `happy feet?`,
+      options: [`dance`, `sing`, `flop`],
+      answer: `dance`
+    },
+    {
+      id: 9,
+      question: `cant speak, cant hear, cant?`,
+      options: [`talk`, `see`, `walk`],
+      answer: `see`
+    },
+    {
+      id: 10,
+      question: `fuck off?`,
+      options: [`no`, `yes`, `hell`],
+      answer: `hell`
+    },
+    {
+      id: 11,
+      question: `school?`,
+      options: [`best`, `learn`, `no life`],
+      answer: `no life`
+    },
+    {
+      id: 12,
+      question: `make my world?`,
+      options: [`stop`, `rock`, `drop`],
+      answer: `drop`
+    } 
   ];
 
 export const QuizData = shuffle(Quiz);
-
 
 // Re-arranges and cuts array
 function shuffle(array) { 
@@ -61,6 +90,6 @@ function shuffle(array) {
        array[i] = array[j]; 
        array[j] = temp; 
    }    
-   return array.slice(0, 4); 
+   return array.slice(0, 8); 
 } 
 
