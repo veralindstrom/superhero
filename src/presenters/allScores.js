@@ -22,7 +22,7 @@ const AllScores = () => {
                         scoreboard = [...scoreArr, ...scoreboard]; //...scoreArr to seperate make each element
             
                     });
-                }
+                };
                 setScoreBoard(scoreboard);
                 console.log("scoreboard: ");
                 console.log(scoreboard);

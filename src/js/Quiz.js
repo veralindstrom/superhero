@@ -1,6 +1,7 @@
 import React from 'react';
 import {QuizData} from './QuizData';
 import '../css/App.css';
+import ScoreList from './scoreList';
 
 class Quiz extends React.Component{
     state = {
@@ -143,7 +144,6 @@ class Quiz extends React.Component{
 
     render() {
         const {questions, options, currentQuestion, userAnswer, quizEnd, start} = this.state;
-
         if(start) {
             return(
                 <div>
@@ -155,7 +155,10 @@ class Quiz extends React.Component{
         }
         
         if(quizEnd) {
+            
             return(
+                <>
+        <ScoreList s={this.state.score} />
                 <div> 
                     <h2> Final score is {this.state.score} points out of {QuizData.length} </h2>
                     <p> The correct answers are: </p>
@@ -171,6 +174,7 @@ class Quiz extends React.Component{
                     > Start Quiz Again </button>
 
                 </div>
+                </>
             )
         }
         
@@ -179,8 +183,8 @@ class Quiz extends React.Component{
             <div className="App">
                 <h2>{questions}</h2>
                 <span> Question {currentQuestion + 1} out of {QuizData.length}</span>
-                {options.map(option => (
-                    <p key={option.id} 
+                {options.map((option, index) => (
+                    <p key={index} 
                     className= {`ui floating message options ${userAnswer === option ? "selected" : null}`}
                     onClick={() => {
                         this.checkAnswer(option); 

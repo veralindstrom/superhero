@@ -32,7 +32,7 @@ class SuperheroSource extends Component {
 
         return (
             <div className="superherodata">
-                loaded
+                <img src={items.image.url}/>
             </div>
         );
 

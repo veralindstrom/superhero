@@ -31,6 +31,8 @@
 
 .todoList{
   width: 60%;
+
+  margin: 2% 0 2% 0;
   overflow-y: scroll;
   text-align: center;
   background-color: #3a2b58;

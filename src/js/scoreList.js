@@ -3,8 +3,12 @@ import fire from "../util/firebase";
 import '../css/App.css';
 import ScoreView from '../view/ScoreView';
 
-  const ScoreList = () => {
-    const [score, setScore ] = useState("");
+  const ScoreList = (props) => {
+      const {
+        s
+      } = props;
+
+    const [score,] = useState(s);
     const [scoreList, setScoreList] = useState();
 
     useEffect(() => {
@@ -23,32 +27,30 @@ import ScoreView from '../view/ScoreView';
         });
       }
 
+      createScore();
+
       return () => isSubscribed = false;
     }, []);
 
-    
-    const clearInput = () => {
-      setScore("");
-    }
 
     const createScore = () => {
-      const user = fire.auth().currentUser;
-      const dbref = fire.database().ref(`all_scores/${user.uid}`);
-      const sc = {
+      if(score){
+        const user = fire.auth().currentUser;
+        const dbref = fire.database().ref(`all_scores/${user.uid}`);
+        const sc = {
           score: score,
-      };
+        };
 
-      dbref.push(sc);
-      clearInput();
+        dbref.push(sc);
+      }
     };
 
     return (
+        <>
             <ScoreView
-                score={score}
-                setScore={setScore}
-                createScore={createScore}
                 scoreList={scoreList}
             />
+        </>
     );
 }
 

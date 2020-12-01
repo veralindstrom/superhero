@@ -1,14 +1,16 @@
 import React from 'react';
-import Score from '../presenters/score';
+import Score from './score';
 
 const ScoreBoard = (props) => {
     const {
         scoreboard
     } = props;
+    
     const scoreboardArr = [];
     scoreboard ? scoreboard.map((score) => scoreboardArr.push(score.score)): console.log('scoreboard not defined');
     scoreboardArr.sort((a, b) => {return b-a});
     console.log("scoreboardArr: " + scoreboardArr);
+
     return (
         <center><div className="todoList">
             <h1>Score Board</h1>
