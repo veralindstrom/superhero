@@ -5,7 +5,7 @@ import '../css/App.css';
 const App = () => {
  
   return (
-          <LoginModel/>
+      <LoginModel/>
   );
 }
 
