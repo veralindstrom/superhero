@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD:src/js/LoginModel.js
 import fire from "../util/firebase";
 import LoginView from '../view/LoginView';
 import Home from '../presenters/home';
-=======
-import { HeroState } from '../Context/HeroContext';
-import fire from '../util/firebase';
-import Login from '../components/Login';
-import Hero from '../components/Hero/Hero';
->>>>>>> Sanaz:src/model/App.js
-import '../css/App.css';
 
 const LoginModel = () => {
   const [user, setUser] = useState("");
