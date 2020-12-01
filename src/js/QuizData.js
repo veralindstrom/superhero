@@ -51,7 +51,6 @@ const Quiz = [
 
 export const QuizData = shuffle(Quiz);
 
-
 // Re-arranges and cuts array
 function shuffle(array) { 
    for (var i = array.length - 1; i > 0; i--) {  
