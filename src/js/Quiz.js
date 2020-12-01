@@ -1,71 +1,216 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {QuizData} from './QuizData';
 import '../css/App.css';
-import QuizData from './QuizData';
-import QuestionBox from '../presenters/QuestionBox';
-import Result from '../presenters/Result';
+import ScoreList from './scoreList';
 
-class Quiz extends Component {
+class Quiz extends React.Component{
     state = {
-        questionBank: [],
+        userAnswer: null,
+        currentQuestion: 0,
+        options: [],
+        quizEnd: false,
         score: 0,
-        responses: 0
-    };
-
-
-    getQuestions = () => {
-        QuizData().then(question => {
-            this.setState({
-                questionBank: question
-            });
-        });
-    };
-
-    computeAnswer = (userAnswer, correctAnswer) => {
-        console.log(userAnswer);
-        if(userAnswer === correctAnswer) {
-            this.setState({
-                score: this.state.score + 1
-            })
-        }
-        this.setState({
-            responses: this.state.responses < 5 ? this.state.responses + 1 : 5
-        })
+        disabled: true,
+        start: true,
+        selected: [0, 0, 0, 0]
     }
 
-    playAgain = () => {
-        this.getQuestions();
-        this.setState({
-            score: 0,
-            responses: 0
-        })
+    loadQuiz = () => {
+        const {currentQuestion} = this.state;
+        this.setState(() => {
+            return {
+                number: QuizData[currentQuestion].id,
+                questions: QuizData[currentQuestion].question,
+                options: QuizData[currentQuestion].options,
+                correct: QuizData[currentQuestion].answer,
+            }
+        });
     }
 
     componentDidMount() {
-        this.getQuestions();
+        this.loadQuiz();
+    }
+
+    // Starts the quiz
+    startQuiz = () => {
+        this.setState({
+            currentQuestion: this.state.currentQuestion,
+            start: false
+        })
+    }
+
+    // Restarts the quiz
+    reStartQuiz = () => {
+        this.loadQuiz();
+        this.setState({
+            currentQuestion: 0,
+            score: 0,
+            quizEnd: false,
+            disabled: true,
+            start: false,
+            selected: [0, 0, 0, 0],
+        })
+    }
+
+    // Moves to next question
+    nextQuestion = () => {
+        this.setState({
+            currentQuestion: this.state.currentQuestion + 1
+        })
+    }
+
+    // Moves to previous question
+    prevQuestion = () => {
+        this.setState({
+            currentQuestion: this.state.currentQuestion - 1
+        })
+    }
+
+    // Updates the component
+    componentDidUpdate(prevProp, prevState) {
+        const {currentQuestion} = this.state;
+        if(this.state.currentQuestion !== prevState.currentQuestion){
+            this.setState(() => {
+                return {
+                    number: QuizData[currentQuestion].id,
+                    questions: QuizData[currentQuestion].question,
+                    options: QuizData[currentQuestion].options,
+                    correct: QuizData[currentQuestion].answer,
+                    disabled: true
+                };
+            })
+        }
+    }
+
+    // Handles finished quiz
+    finishQuiz = () => {
+        if(this.state.currentQuestion === QuizData.length - 1){
+            this.setState({
+                quizEnd: true
+            })
+            this.finalScore();
+        }
+    }
+
+    // Calculate the final score of the quiz
+    finalScore = () => {
+        const correctAnswers = QuizData.map((item, index) => {return item.answer});
+        this.setState({
+            score: this.compareCorrectAnswers(this.state.selected, correctAnswers)
+        })
+        console.log("Correct answers: " + correctAnswers);
+    }
+
+    // Compare the array of chosen answers with the correct answers
+    compareCorrectAnswers = (answers, corrects) => {
+        if(answers.length !== corrects.length) {
+            return false;
+        }
+        else { 
+            let result = 0; 
+            // comparing each element of array 
+            for(let i=0; i<answers.length; i++) {
+                if(answers[i] === corrects[i]) {
+                    result += 1;
+                }
+            }
+            return result;     
+        } 
+    }
+
+    // Checks answer
+    checkAnswer = answer => {
+        this.setState({
+            userAnswer: answer,
+            disabled: false
+        })
+    }
+
+    // Collect selected answer in index corresponding to question
+    selectedAnswers = (index, answer) => {
+        const newSelected = this.state.selected.map((element, i) => {
+            if(i === index){
+                return answer;
+            }
+            else {
+                return element;
+            }
+        });
+        // must have callback function to update state correctly, else setState is behind
+        this.setState({
+            selected: newSelected
+        }, function(){console.log(this.state.selected)})
     }
 
     render() {
+        const {questions, options, currentQuestion, userAnswer, quizEnd, start} = this.state;
+        if(start) {
+            return(
+                <div>
+                    <button className="ui inverted button"
+                        onClick={this.startQuiz}
+                    > Start Quiz </button>
+                </div>
+            )
+        }
+        
+        if(quizEnd) {
+            
+            return(
+                <>
+        <ScoreList s={this.state.score} />
+                <div> 
+                    <h2> Final score is {this.state.score} points out of {QuizData.length} </h2>
+                    <p> The correct answers are: </p>
+                    <ul>
+                        {QuizData.map((item, index) => (
+                            <li className="ui floating message options"
+                                key={index}
+                            >{item.answer}</li>
+                        ))}
+                    </ul>
+                    <button className="ui inverted button"
+                        onClick={this.reStartQuiz}
+                    > Start Quiz Again </button>
+
+                </div>
+                </>
+            )
+        }
+        
         return(
-            <div className="containter">
-                <div className="title">Super Hero Quiz</div>
-                {this.state.questionBank.length > 0 &&
-                this.state.responses < 5 &&
-                    this.state.questionBank.map(
-                        ({question, answers, correct, id}) => (
-                            <QuestionBox 
-                            question={question} 
-                            options={answers} 
-                            key={id}
-                            selected={answer => this.computeAnswer(answer, correct)}
-                            />
-                        )
-                    )}
-                    {this.state.responses === 5 ? (
-                        <Result score={this.state.score} playAgain={this.playAgain}/> 
-                    ) : null}
+            // visible on screen
+            <div className="App">
+                <h2>{questions}</h2>
+                <span> Question {currentQuestion + 1} out of {QuizData.length}</span>
+                {options.map((option, index) => (
+                    <p key={index} 
+                    className= {`ui floating message options ${userAnswer === option ? "selected" : null}`}
+                    onClick={() => {
+                        this.checkAnswer(option); 
+                        this.selectedAnswers(this.state.currentQuestion, option);
+                        //this.selectedAnswers(this.state.number, option);
+                        }}>
+                            {option}
+                    </p>
+                ))}
+
+
+                {currentQuestion > 0 &&
+                    <button className="ui inverted button"
+                        onClick={this.prevQuestion}
+                    > Previous </button>}
+                {currentQuestion < QuizData.length - 1 &&
+                    <button className="ui inverted button"
+                        disabled={this.state.disabled} 
+                        onClick={this.nextQuestion}
+                    > Next </button>}
+                {currentQuestion === QuizData.length - 1 && 
+                    <button onClick={this.finishQuiz}
+                    > Finish </button>}
             </div>
-        );
-    };
+        )
+    }
 }
 
 export default Quiz;

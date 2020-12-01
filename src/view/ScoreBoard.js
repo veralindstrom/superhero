@@ -1,5 +1,5 @@
 import React from 'react';
-import Score from '../presenters/score';
+import Score from './score';
 
 const ScoreBoard = (props) => {
     const {

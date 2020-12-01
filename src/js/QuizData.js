@@ -1,75 +1,66 @@
-const QuizData = [
+const Quiz = [
     {
-        question: "Who is Batman?",
-        answers: ["Bruce Wayne", "Clark Kent", "Barry Allen", "Tony Stark"],
-        correct: "Bruce Wayne",
-        id: 0
+      id: 0,
+      question: `What do you think?`,
+      options: [`Ok`, `Good`, `Bad`],
+      answer: `Good`
     },
-
     {
-        question: "This Marvel superhero is often called \"The man without fear\".",
-        answers: ["Daredevil", "Thor","Wolverine","Hulk"],
-        correct: "Daredevil",
-        id: 1
+      id: 1,
+      question: `Right asnwer is answer or?`,
+      options: [`wrong`, `answer`, `correct`],
+      answer: `correct`
     },
-
     {
-        question: "What is the alter-ego of the DC comics character \"Superman\"?",
-        answers: ["Bruce Wayne", "Arthur Curry", "Clark Kent", "John Jones"],
-        correct: "Clark Kent",
-        id: 2
+      id: 2,
+      question: `No question, just guess?`,
+      options: [`Guess again`, `Still wrong`, `Yippi`],
+      answer: `Yippi`
     },
-
     {
-        question: "In the Batman comics, by what other name is the villain Dr. Jonathan Crane known?",
-        answers: ["Bane", "Scarecrow", "Calendar Man", "Clayface"],
-        correct: "Scarecrow",
-        id: 3
+      id: 3,
+      question: `Hakuna...?`,
+      options: [`Havana`, `Sahara`, `Matata`],
+      answer: `Matata`
     },
-
     {
-        question: "Which of the following superheros did Wonder Woman NOT have a love interest in?",
-        answers: ["Green Arrow", "Superman","Batman", "Steve Trevor"],
-        correct: "Green Arrow",
-        id: 4
+      id: 4,
+      question: `what?`,
+      options: [`yes`, `no`, `no`],
+      answer: `yes`
     },
-
     {
-        question: "Which \"Green Arrow\" sidekick commonly wears a baseball cap?",
-        answers: ["Black Canary", "Emiko Queen", "Roy Harper", "Dick Grayson"],
-        correct: "Roy Harper",
-        id: 5
+      id: 5,
+      question: `correct?`,
+      options: [`wrong`, `wrong`, `right`],
+      answer: `right`
     },
-
     {
-        question: "Better known by his nickname Logan, what is Wolverine's birth name?",
-        answers: ["Logan Wolf", "James Howlett", "Thomas Wilde", "John Savage"],
-        correct: "James Howlett",
-        id: 6
+      id: 6,
+      question: `ok?`,
+      options: [`fine`, `whatever`, `cool`],
+      answer: `cool`
     },
-
     {
-        question: "Which of the following rings from the DC Comics' \"Lantern Corps\" are classified as Parasitic?",
-        answers: ["Green (Willpower)", "White (Life)", "Indigo (Compassion)", "Yellow (Fear)"],
-        correct: "Indigo (Compassion)",
-        id: 7
-    },
-
-    {
-        question: "When Batman trolls the online chat rooms, what alias does he use?",
-        answers: ["JonDoe297", "iAmBatman", "BWayne13", "BW1129"],
-        correct: "JonDoe297",
-        id: 8
-    },
-
-    {
-        question: "What's the name of Batman's parents?",
-        answers: ["Joey & Jackie", "Jason & Sarah", "Thomas & Martha", "Todd & Mira"],
-        correct: "Thomas & Martha",
-        id: 9
+      id: 7,
+      question: `i wanna?`,
+      options: [`what`, `rock`, `stop`],
+      answer: `rock`
     }
-];
+  ];
 
-export default (n = 5) =>
-    Promise.resolve(QuizData.sort(() => 0.5 - Math.random()).slice(0, n));
+export const QuizData = shuffle(Quiz);
+
+
+// Re-arranges and cuts array
+function shuffle(array) { 
+   for (var i = array.length - 1; i > 0; i--) {  
+       // Generate random number  
+       var j = Math.floor(Math.random() * (i + 1));             
+       var temp = array[i]; 
+       array[i] = array[j]; 
+       array[j] = temp; 
+   }    
+   return array.slice(0, 4); 
+} 
 
