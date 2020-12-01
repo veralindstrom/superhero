@@ -11,7 +11,7 @@ class Quiz extends React.Component{
         score: 0,
         disabled: true,
         start: true,
-        selected: [0, 0, 0, 0]
+        selected: [0, 0, 0, 0, 0, 0, 0, 0]
     }
 
     loadQuiz = () => {
@@ -47,7 +47,7 @@ class Quiz extends React.Component{
             quizEnd: false,
             disabled: true,
             start: false,
-            selected: [0, 0, 0, 0],
+            selected: [0, 0, 0, 0, 0, 0, 0, 0],
         })
     }
 
