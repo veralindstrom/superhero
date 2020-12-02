@@ -237,3 +237,25 @@ body previous hero {
   );
 }
 
+/* SANAZ ändrade*/
+
+.character-container{
+  background-color: #22254b;
+  display: flex;
+  flex-wrap: wrap;
+}
+.body{
+  background-color: #22254b;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.character{
+  margin: 1rem;
+  width: 300px;
+
+}
+
+.character img{
+  max-width: 100%;
+}

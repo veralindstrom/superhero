@@ -12,7 +12,7 @@ class SuperheroSource extends Component {
     }
 
     componentDidMount() {
-        fetch('https://cors-anywhere.herokuapp.com/superheroapi.com/api/1741527979362433/70')
+        fetch('https://cors-anywhere.herokuapp.com/superheroapi.com/api/1741527979362433/195')
             .then(res => res.text()).then(text => JSON.parse(text))
             .then(text => {
                 this.setState({
@@ -32,7 +32,7 @@ class SuperheroSource extends Component {
 
         return (
             <div className="superherodata">
-                <img src={items.image.url}/>
+
             </div>
         );
 
