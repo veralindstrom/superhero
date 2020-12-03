@@ -7,7 +7,8 @@ const Character = ({ name, image }) => (
     <div className="character">
         <img src={image.url} alt={name} />
         <div className="character-info">
-            <h3>{name}</h3>
+            
+            <h2>{name}</h2>
         </div>
     </div>
 
