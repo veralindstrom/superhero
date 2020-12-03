@@ -1,6 +1,10 @@
 import React from 'react';
 import {QuizData} from './QuizData';
 import '../css/App.css';
+import QuizEnd from '../view/QuizEnd';
+import QuizStart from '../view/QuizStart';
+import QuizView from '../view/QuizView';
+
 
 class Quiz extends React.Component{
     state = {
@@ -142,71 +146,41 @@ class Quiz extends React.Component{
     }
 
     render() {
-        const {questions, options, currentQuestion, userAnswer, quizEnd, start} = this.state;
+        const {questions, options, currentQuestion, userAnswer, quizEnd, start, score, disabled} = this.state;
 
         if(start) {
             return(
-                <div>
-                    <button className="ui inverted button"
-                        onClick={this.startQuiz}
-                    > Start Quiz </button>
-                </div>
+                <QuizStart
+                    startQuiz={this.startQuiz} 
+                />
             )
         }
         
         if(quizEnd) {
             return(
-                <div> 
-                    <h2> Final score is {this.state.score} points out of {QuizData.length} </h2>
-                    <p> The correct answers are: </p>
-                    <ul>
-                        {QuizData.map((item, index) => (
-                            <li className="ui floating message options"
-                                key={index}
-                            >{item.answer}</li>
-                        ))}
-                    </ul>
-                    <button className="ui inverted button"
-                        onClick={this.reStartQuiz}
-                    > Start Quiz Again </button>
-
-                </div>
+                <QuizEnd
+                    score={score}
+                    quiz={QuizData}
+                    reStart={this.reStartQuiz}
+                />
             )
         }
         
         return(
-            // visible on screen
-            <div className="App">
-                <h2>{questions}</h2>
-                <span> Question {currentQuestion + 1} out of {QuizData.length}</span>
-                {options.map(option => (
-                    <p key={option.id} 
-                    className= {`ui floating message options ${userAnswer === option ? "selected" : null}`}
-                    onClick={() => {
-                        this.checkAnswer(option); 
-                        this.selectedAnswers(this.state.currentQuestion, option);
-                        //this.selectedAnswers(this.state.number, option);
-                        }}>
-                            {option}
-                    </p>
-                ))}
-
-
-                {currentQuestion > 0 &&
-                    <button className="ui inverted button"
-                        onClick={this.prevQuestion}
-                    > Previous </button>}
-                {currentQuestion < QuizData.length - 1 &&
-                    <button className="ui inverted button"
-                        disabled={this.state.disabled} 
-                        onClick={this.nextQuestion}
-                    > Next </button>}
-                {currentQuestion === QuizData.length - 1 && 
-                    <button onClick={this.finishQuiz}
-                    > Finish </button>}
-            </div>
+            <QuizView
+                questions={questions}
+                currentQuestion={currentQuestion}
+                quiz={QuizData}
+                options={options}
+                userAnswer={userAnswer}
+                checkAnswer={this.checkAnswer}
+                selectedAnswers={this.selectedAnswers}
+                prev={this.prevQuestion}
+                next={this.nextQuestion}
+                finish={this.finishQuiz}
+                disabled={disabled}
+            />
         )
     }
 }
-
 export default Quiz;
