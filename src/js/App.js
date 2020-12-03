@@ -8,7 +8,7 @@ const API_KEY = '1741527979362433';
 
 const featureUrl = 'https://www.superheroapi.com/api.php/1741527979362433/search/a';
 const searchUrl = 'https://www.superheroapi.com/api.php/1741527979362433/search/';
-//const imageUrl = 'https://superheroapi.com/api/1741527979362433/70/image';
+
 
 
 
@@ -58,12 +58,12 @@ function App() {
     onChange={handleOnChange}/>
     </form>
   </header>
-    <div className="movie-container">
+    <div className="character-container">
       {characters.length > 0 &&
         characters.map((character) =>
           <Character key={character.id} {...character} />
         )}
-      <LoginModel />
+      <LoginModel/>
     </div>
     </>
   );

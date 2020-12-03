@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   font-family: "Nunito", sans-serif;
-  
 }
 
 
@@ -205,7 +204,9 @@ button {
 
 
 /**SANAZ**/
+
 .character-container{
+  background-color: #22254b;
   display: flex;
   flex-wrap: wrap;
 }
@@ -218,7 +219,7 @@ button {
    overflow: hidden;
    position: relative;
   margin: 1rem;
-  width: 300px;
+  width: 250px;
 }
 
 .character img{
