@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Login = (props) => {
+const LoginView = (props) => {
     const { email,
         setEmail,
         password,
@@ -40,4 +40,4 @@ const Login = (props) => {
     )
 
 }
-export default Login;
+export default LoginView;
