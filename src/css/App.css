@@ -199,3 +199,17 @@ button {
   padding: 8px 0;
   background: #3a2b58;
 }
+
+.character-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.character{
+  margin: 1 rem;
+  width: 250px;
+}
+
+.character img{
+  max-width: 100%;
+}
