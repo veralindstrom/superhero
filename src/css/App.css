@@ -213,3 +213,10 @@ button {
 .character img{
   max-width: 100%;
 }
+
+.character-info {
+  display: flex;
+  align-items: center;
+  
+}
+
