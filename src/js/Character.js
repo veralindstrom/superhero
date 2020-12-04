@@ -5,9 +5,11 @@ import React from 'react';
 
 const Character = ({ name, image }) => (
     <div className="character">
-        <img src={image.url} alt={name} />
+        <img src={image.url ? image.url :
+            'https://se.depositphotos.com/28850541/stock-illustration-male-default-profile-picture.html'} alt={name} />
         <div className="character-info">
-            <h3>{name}</h3>
+
+            <h2>{name}</h2>
         </div>
     </div>
 
