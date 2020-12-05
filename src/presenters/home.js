@@ -3,6 +3,7 @@ import ScoreList from '../js/ScoreModel';
 import SuperheroSource from '../js/SuperheroSource';
 import AllScores from './allScores';
 import Quiz from '../js/Quiz';
+import CharacterList from '../js/CharacterList';
 
 const Home = ({ handleLogOut }) => {
 
@@ -12,6 +13,7 @@ const Home = ({ handleLogOut }) => {
                 <h2>Welcome</h2>
                 <button className="logoutBtn" onClick={handleLogOut}>Logout</button>
             </nav>
+            <CharacterList/>
             <ScoreList/>
             <AllScores/>
             <Quiz />
