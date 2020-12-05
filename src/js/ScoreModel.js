@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import fire from "../util/firebase";
 import '../css/App.css';
-import ScoreView from '../view/ScoreView';
 import YourScores from '../presenters/yourScores';
 import AllScores from '../presenters/allScores';
 
-  const ScoreList = () => {
+  const ScoreModel = () => {
     const user = fire.auth().currentUser;
     const dbref = fire.database().ref(`all_scores/${user.uid}`);
 
@@ -30,4 +29,4 @@ import AllScores from '../presenters/allScores';
     );
 }
 
-export default ScoreList;
+export default ScoreModel;
