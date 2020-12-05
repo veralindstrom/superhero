@@ -3,6 +3,7 @@ import fire from '../util/firebase';
 import ScoreBoard from '../view/ScoreBoard';
 
 const AllScores = () => {
+
     const [scoreBoard, setScoreBoard] = useState();
 
     useEffect(() => {
@@ -24,8 +25,6 @@ const AllScores = () => {
                     });
                 };
                 setScoreBoard(scoreboard);
-                console.log("scoreboard: ");
-                console.log(scoreboard);
             });
         }
         return () => isSubscribed = false;

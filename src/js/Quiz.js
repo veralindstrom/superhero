@@ -4,7 +4,7 @@ import '../css/App.css';
 import QuizEnd from '../view/QuizEnd';
 import QuizStart from '../view/QuizStart';
 import QuizView from '../view/QuizView';
-import ScoreList from './scoreList';
+import YourScores from '../presenters/yourScores';
 
 
 class Quiz extends React.Component{
@@ -159,7 +159,7 @@ class Quiz extends React.Component{
         
         if(quizEnd) {         
             return(
-                <><ScoreList s={score} />
+                <><YourScores s={score} />
                 <QuizEnd
                     score={score}
                     quiz={QuizData}
