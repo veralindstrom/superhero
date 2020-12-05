@@ -1,6 +1,5 @@
 import React from 'react';
-import Data from './Data';
-import ScoreList from '../js/scoreList';
+import ScoreList from '../js/ScoreModel';
 import SuperheroSource from '../js/SuperheroSource';
 import AllScores from './allScores';
 import Quiz from '../js/Quiz';
