@@ -21,8 +21,6 @@ import AllScores from '../presenters/allScores';
     return (
         <>
             <YourScores
-                user={user}
-                dbref={dbref}
                 createScore={createScore}
             />
         </>

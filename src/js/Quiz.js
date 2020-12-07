@@ -1,5 +1,5 @@
 import React from 'react';
-import {QuizData} from './QuizData';
+import {BuildQuiz} from './QuizData';
 import '../css/App.css';
 import QuizEnd from '../view/QuizEnd';
 import QuizStart from '../view/QuizStart';
@@ -8,19 +8,23 @@ import YourScores from '../presenters/yourScores';
 
 
 class Quiz extends React.Component{
-    state = {
-        userAnswer: null,
-        currentQuestion: 0,
-        options: [],
-        quizEnd: false,
-        score: 0,
-        disabled: true,
-        start: true,
-        selected: [0, 0, 0, 0, 0, 0, 0, 0]
+    constructor(props) {
+        super(props);
+        this.state = {
+            QuizData: BuildQuiz(this.props.item, this.props.wrongItem1, this.props.wrongItem2),
+            userAnswer: null,
+            currentQuestion: 0,
+            options: [],
+            quizEnd: false,
+            score: 0,
+            disabled: true,
+            start: true,
+            selected: [0, 0, 0, 0, 0, 0, 0, 0]
+        }
     }
 
     loadQuiz = () => {
-        const {currentQuestion} = this.state;
+        const {currentQuestion, QuizData} = this.state;
         this.setState(() => {
             return {
                 number: QuizData[currentQuestion].id,
@@ -72,7 +76,7 @@ class Quiz extends React.Component{
 
     // Updates the component
     componentDidUpdate(prevProp, prevState) {
-        const {currentQuestion} = this.state;
+        const {currentQuestion, QuizData} = this.state;
         if(this.state.currentQuestion !== prevState.currentQuestion){
             this.setState(() => {
                 return {
@@ -88,7 +92,7 @@ class Quiz extends React.Component{
 
     // Handles finished quiz
     finishQuiz = () => {
-        if(this.state.currentQuestion === QuizData.length - 1){
+        if(this.state.currentQuestion === this.state.QuizData.length - 1){
             this.setState({
                 quizEnd: true
             })
@@ -98,7 +102,7 @@ class Quiz extends React.Component{
 
     // Calculate the final score of the quiz
     finalScore = () => {
-        const correctAnswers = QuizData.map((item, index) => {return item.answer});
+        const correctAnswers = this.state.QuizData.map((item, index) => {return item.answer});
         this.setState({
             score: this.compareCorrectAnswers(this.state.selected, correctAnswers)
         })
@@ -116,6 +120,7 @@ class Quiz extends React.Component{
             for(let i=0; i<answers.length; i++) {
                 if(answers[i] === corrects[i]) {
                     result += 1;
+                    console.log(result);
                 }
             }
             return result;     
@@ -162,7 +167,7 @@ class Quiz extends React.Component{
                 <><YourScores s={score} />
                 <QuizEnd
                     score={score}
-                    quiz={QuizData}
+                    quiz={this.state.QuizData}
                     reStart={this.reStartQuiz}
                 /></>
             )
@@ -172,7 +177,7 @@ class Quiz extends React.Component{
             <QuizView
                 questions={questions}
                 currentQuestion={currentQuestion}
-                quiz={QuizData}
+                quiz={this.state.QuizData}
                 options={options}
                 userAnswer={userAnswer}
                 checkAnswer={this.checkAnswer}

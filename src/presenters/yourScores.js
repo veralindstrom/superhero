@@ -1,13 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import fire from '../util/firebase';
-import ScoreBoard from '../view/ScoreBoard';
 import ScoreView from '../view/ScoreView';
 
 const YourScores = (props) => {
     const {
         s,
-        user,
-        dbref,
         createScore
     } = props;
     
@@ -16,7 +13,8 @@ const YourScores = (props) => {
 
     useEffect(() => {
       let isSubscribed = true;
-
+      const user = fire.auth().currentUser;
+      const dbref = fire.database().ref(`all_scores/${user.uid}`);
       if(isSubscribed){
         dbref.on("value", snapshot => {
         const scores = snapshot.val();
@@ -30,7 +28,14 @@ const YourScores = (props) => {
         });
       }
 
-      createScore(score);
+     // createScore(score);
+      if(score){
+        const sc = {
+          score: score,
+        };
+
+        dbref.push(sc);
+      }
 
       return () => isSubscribed = false;
     }, []);
