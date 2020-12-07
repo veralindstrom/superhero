@@ -220,6 +220,7 @@ button {
    position: relative;
   margin: 1rem;
   width: 250px;
+  
 }
 
 .character img{
@@ -235,7 +236,6 @@ button {
     right: 0;
    transform: translateY(100%);
    transition: transfrom 0.3s ease-in-out;
-    
   }
   .character:hover .character-info{
     transform: translateY(0%);
@@ -258,6 +258,13 @@ button {
   .search:focus{
     outline: none;
   }
-  
+  .character-btn{
+    border: 1px solid;
+    display: grid;
+    padding: 5px 10px;
+    
+    outline: none;
+    color: #fff;
+  }
 
   
