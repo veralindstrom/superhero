@@ -15,6 +15,8 @@ const YourScores = (props) => {
       let isSubscribed = true;
       const user = fire.auth().currentUser;
       const dbref = fire.database().ref(`all_scores/${user.uid}`);
+
+      //get scoreList
       if(isSubscribed){
         dbref.on("value", snapshot => {
         const scores = snapshot.val();

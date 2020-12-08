@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import LoginModel from './LoginModel';
 import '../css/App.css';
 

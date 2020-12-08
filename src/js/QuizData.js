@@ -1,37 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import Quiz from './Quiz';
-import SuperheroSource from "./SuperheroSource";
-
-const Item = (id) => {
-  function generateRandom(min, max, no1, no2) {
-    var num = Math.floor(Math.random() * (max - min + 1)) + min;
-    return (num === no1|| num === no2) ? generateRandom(min, max) : num;
-}
-
-  const [item, setItem] = useState(null);
-  const [wrongItem1, setWrongItem1] = useState(null);
-  const [wrongItem2, setWrongItem2] = useState(null);
-
-  const rand1 =  generateRandom(1, 731, id, 0);
-  const rand2 =  generateRandom(1, 731, id, rand1);
-
-    useEffect(() => {
-      SuperheroSource.getSuperheroById("71").then(data=>setItem(data)).catch(err=>console.log(err));
-      SuperheroSource.getSuperheroById("63").then(data=>setWrongItem1(data)).catch(err=>console.log(err));
-      SuperheroSource.getSuperheroById("54").then(data=>setWrongItem2(data)).catch(err=>console.log(err));
-    }, []);
-    console.log("item: " + item);
-
-    if(item && wrongItem1 && wrongItem2)
-    { console.log("item exist: " + item);
-      return <Quiz item={item} wrongItem1={wrongItem1} wrongItem2={wrongItem2}/>
-    }
-
-    return(
-      <h1>hej</h1>
-    )
-}
-export default Item;
 
 export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
 
@@ -45,7 +11,8 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
   const race = item.appearance.race;
   let place_of_birth = item.biography["place-of-birth"];
   if(place_of_birth === "-") place_of_birth = "Unknown";
-  const work = item.work.occupation;
+  let work = item.work.occupation;
+  if(work === "-") work = "Unknown";
   let work_base = item.work.base;
   if(work_base === "-") place_of_birth = "Unknown";
   const publisher = item.biography.publisher;
@@ -55,11 +22,19 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
   
   let wrong_place_of_birth1 = wrongItem1.biography["place-of-birth"];
   if(wrong_place_of_birth1 === "-") place_of_birth = "Unknown";
+  let wrong_eye_color1 = wrongItem1.appearance["eye-color"];
+  if(wrong_eye_color1 === "-") wrong_eye_color1 = "Unknown";
+  let wrong_work1 = item.work.occupation;
+  if(wrong_work1 === "-") wrong_work1 = "Unknown";
   let wrong_work_base1 = wrongItem1.work.base;
   if(wrong_work_base1 === "-") place_of_birth = "Unknown";
  
   let wrong_place_of_birth2 = wrongItem2.biography["place-of-birth"];
   if(wrong_place_of_birth2  === "-") place_of_birth = "Unknown";
+  let wrong_eye_color2 = wrongItem2.appearance["eye-color"];
+  if(wrong_eye_color2 === "-") wrong_eye_color2 = "Unknown";
+  let wrong_work2 = item.work.occupation;
+  if(wrong_work2 === "-") wrong_work2 = "Unknown";
   let wrong_work_base2 = wrongItem2.work.base;
   if(wrong_work_base2 === "-") place_of_birth = "Unknown";
   
@@ -79,7 +54,7 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
     {
       id: 2,
       question: "Eye color?",
-      options: [eye_color, wrongItem1.appearance["eye-color"], wrongItem2.appearance["eye-color"]],
+      options: [eye_color, wrong_eye_color1, wrong_eye_color2],
       answer: eye_color
     },
     {
@@ -103,7 +78,7 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
     {
       id: 6,
       question: "Works with?",
-      options: [work, wrongItem1.work.occupation, wrongItem2.work.occupation],
+      options: [work, wrong_work2, wrong_work1],
       answer: work
     },
     {

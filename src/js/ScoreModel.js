@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import fire from "../util/firebase";
 import '../css/App.css';
 import YourScores from '../presenters/yourScores';
-import AllScores from '../presenters/allScores';
 
   const ScoreModel = () => {
     const user = fire.auth().currentUser;

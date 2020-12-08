@@ -1,10 +1,8 @@
 import React from 'react';
 import ScoreList from '../js/ScoreModel';
 import AllScores from './allScores';
-import Quiz from '../js/Quiz';
 import CharacterList from '../js/CharacterList';
-import SuperheroSource from '../js/SuperheroSource';
-import Item from '../js/QuizData';
+import Item from './BuildQuiz';
 
 const Home = ({ handleLogOut }) => {
     return (
