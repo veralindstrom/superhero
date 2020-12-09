@@ -1,7 +1,8 @@
+import {BASE_URL, API_KEY} from './apiConfig';
 
 const SuperheroSource = {
     apiCall(param) {
-        return fetch(`https://cors-anywhere.herokuapp.com/superheroapi.com/api/1741527979362433/${param}`)
+        return fetch(`${BASE_URL}/${API_KEY}/${param}`)
             .then(res => res.text()).then(text => JSON.parse(text))
             .catch(err => console.log(err));
     },
