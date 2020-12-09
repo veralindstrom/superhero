@@ -13,8 +13,9 @@ const ScoreView = (props) => {
     
     return (
         <div>
-            <center><div className="todoList">
-                <h1>Your scores:</h1>
+            <center>
+            <h1>Your scores:</h1>
+            <div className="todoList">
                 <center>{scoreListArr.map((score, index) => <Score key={index} score={score} />)}</center>
             </div></center>
         </div>

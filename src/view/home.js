@@ -1,8 +1,8 @@
 import React from 'react';
-import ScoreList from '../js/ScoreModel';
-import AllScores from './allScores';
+import AllScores from '../presenters/AllScores';
 import CharacterList from '../js/CharacterList';
-import Item from './BuildQuiz';
+import Item from '../presenters/BuildQuiz';
+import YourScores from '../presenters/YourScores';
 
 const Home = ({ handleLogOut }) => {
     return (
@@ -13,7 +13,7 @@ const Home = ({ handleLogOut }) => {
             </nav>
             <Item id="71"/>
             <CharacterList/>
-            <ScoreList/>
+            <YourScores/>
             <AllScores/>
            
         </section>
