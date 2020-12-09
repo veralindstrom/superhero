@@ -5,8 +5,7 @@
   font-family: "Nunito", sans-serif;
 }
 
-
-.addTodo{
+.addTodo {
   text-align: center;
   margin: 20px;
 }
@@ -26,57 +25,57 @@
 .addTodo button {
   width: 20%;
   padding: 1%;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 1px 2px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-.todoList{
+.todoList {
   width: 60%;
 
   margin: 2% 0 2% 0;
   overflow-y: scroll;
   text-align: center;
   background-color: #3a2b58;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 1px 2px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-.todo{
+.todo {
   text-align: center;
   margin-bottom: 2%;
   padding: 1%;
   width: 60%;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 1px 2px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-.todo h2{
+.todo h2 {
   margin-bottom: 2%;
 }
 
 .todo button {
   font-size: 20px;
   padding: 1%;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 1px 2px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 1%;
 }
 
-.notCompletedBtn{
+.notCompletedBtn {
   color: rgb(150, 148, 148);
   background-color: #3a2c5e;
 }
 
-.notCompletedBtn:hover:enabled{
+.notCompletedBtn:hover:enabled {
   color: rgb(150, 148, 148);
   background-color: #3a2c5e;
 }
 
-.notCompletedBtn:hover:before{
+.notCompletedBtn:hover:before {
   content: "Not ";
 }
 
-.notCompletedBtn:hover:after{
+.notCompletedBtn:hover:after {
   content: "?";
 }
 
-button:hover:enabled{
+button:hover:enabled {
   background-color: #fff;
   color: #603bbb;
 }
@@ -202,69 +201,67 @@ button {
   background: #3a2b58;
 }
 
-
 /**SANAZ**/
 
-.character-container{
+.character-container {
   background-color: #22254b;
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+  border: 2px solid white;
+  height: 500px;
+  overflow: scroll;
 }
 
-.character{
+.character {
   background-color: #373b69;
   border-radius: 3px;
-  box-shadow: 3px 3px 5px
-   rgba(0, 0, 0, 0.1);
-   overflow: hidden;
-   position: relative;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
   margin: 1rem;
   width: 250px;
-  
 }
 
-.character img{
+.character img {
   max-width: 100%;
 }
-  .character-info {
-    position: absolute;
-    background-color: #fff;
-    color: #22254b;
-    padding: 1rem;
-    bottom: 0;
-    left: 0;
-    right: 0;
-   transform: translateY(100%);
-   transition: transfrom 0.3s ease-in-out;
-  }
-  .character:hover .character-info{
-    transform: translateY(0%);
-  }
-  header{
-    background-color: #373b69;
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .search{
-    background-color: transparent;
-    border: 2px solid #22254b;
-    font-family: inherit;
-    border-radius: 50px;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 0.5rem 1,5rem;
-  }
-  .search:focus{
-    outline: none;
-  }
-  .character-btn{
-    border: 1px solid;
-    display: grid;
-    padding: 5px 10px;
-    
-    outline: none;
-    color: #fff;
-  }
-
+.character-info {
+  position: absolute;
+  background-color: #fff;
+  color: #22254b;
+  padding: 1rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: transfrom 0.3s ease-in-out;
+}
+.character:hover .character-info {
+  transform: translateY(0%);
+  background-color: #fff;
+  color: #22254b;
+}
+header {
+  background-color: #373b69;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.search {
+  background-color: transparent;
+  border: 2px solid #22254b;
+  font-family: inherit;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.5rem 1, 5rem;
+}
+.search:focus {
+  outline: none;
+}
+.quiz-button{
   
+  background-color: #fff;
+  color: #22254b;
+}
