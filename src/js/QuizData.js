@@ -27,7 +27,6 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
       "sidekick",
       "nemesis"
     ];
-    console.log(array);
     return array;
   }
 
@@ -35,86 +34,83 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
   const wrongAnswers1 = checkInfo(generateAnswers(wrongItem1));
   const wrongAnswers2 = checkInfo(generateAnswers(wrongItem2));
 
-  console.log(correctAnswers);
-  console.log(wrongAnswers1);
-  console.log(wrongAnswers2);
   
    const QuizData = [
     {
       id: 0,
-      question: "Alter ego?",
+      question: "Who is/are " + item.name + "s alter ego?",
       options: [correctAnswers[0], wrongAnswers1[0], wrongAnswers2[0]],
       answer: correctAnswers[0]
     },
     {
       id: 1,
-      question: "Relatives?",
+      question: "Who is/are " + item.name + "s relatives?",
       options: [wrongAnswers1[1], correctAnswers[1], wrongAnswers2[1]],
       answer: correctAnswers[1]
     },
     {
       id: 2,
-      question: "Eye color?",
+      question: "What is " + item.name + "s eye color?",
       options: [wrongAnswers1[2], wrongAnswers2[2], correctAnswers[2]],
       answer: correctAnswers[2]
     },
     {
       id: 3,
-      question: "Alignment?",
+      question: "What is " + item.name + "s alignment?",
       options: [wrongAnswers1[3], wrongAnswers2[3], correctAnswers[3]],
       answer: correctAnswers[3]
     },
     {
       id: 4,
-      question: "Race?",
+      question: "What is " + item.name + "?",
       options: [wrongAnswers2[4], correctAnswers[4], wrongAnswers1[4]],
       answer: correctAnswers[4]
     },
     {
       id: 5,
-      question: "Place of birth",
+      question: "Where was " + item.name + " born?",
       options: [correctAnswers[5], wrongAnswers1[5], wrongAnswers2[5]],
       answer: correctAnswers[5]
     },
     {
       id: 6,
-      question: "Works with?",
+      question: "What does " + item.name + " work with?",
       options: [correctAnswers[6], wrongAnswers1[6], wrongAnswers2[6]],
       answer: correctAnswers[6]
     },
     {
       id: 7,
-      question: "Works at?",
+      question: "Where does " + item.name + " work at?",
       options: [wrongAnswers2[7], correctAnswers[7], wrongAnswers1[7]],
       answer: correctAnswers[7]
     },
     {
       id: 8,
-      question: "Aliases",
+      question: "Who is/are " + item.name + "s alias/es?",
       options: [wrongAnswers2[8], wrongAnswers1[8], correctAnswers[8]],
       answer: correctAnswers[8]
     },
     {
       id: 9,
-      question: "Publisher?",
+      question: "Who published " + item.name + "?",
       options: [correctAnswers[9], wrongAnswers1[9], wrongAnswers2[9]],
       answer: correctAnswers[9]
     },
     {
       id: 10,
-      question: "Real name?",
+      question: "Who plays the character of " + item.name + "? (Real name)",
       options: [wrongAnswers2[10], correctAnswers[10], wrongAnswers1[10]],
       answer: correctAnswers[10]
     },
     {
       id: 11,
-      question: "Nemesis?",
+      question: "Who is/are " + item.name + "s nemesis?",
       options: [correctAnswers[11], wrongAnswers2[11], wrongAnswers1[11]],
       answer: correctAnswers[11]
     },
     {
       id: 12,
-      question: "Side-kick?",
+      question: "Who is/are " + item.name + "s side-kick?",
       options: [correctAnswers[12], wrongAnswers1[12], wrongAnswers2[12]],
       answer: correctAnswers[12]
     } 
@@ -132,17 +128,3 @@ for (var i = QuizData.length - 1; i > 0; i--) {
 return QuizData.slice(0, 8); 
 }
 
-/*
-export const QuizData = shuffle(Quiz);
-
-// Re-arranges and cuts array
-function shuffle(array) { 
-   for (var i = array.length - 1; i > 0; i--) {  
-       // Generate random number  
-       var j = Math.floor(Math.random() * (i + 1));             
-       var temp = array[i]; 
-       array[i] = array[j]; 
-       array[j] = temp; 
-   }    
-   return array.slice(0, 8); 
-} */
