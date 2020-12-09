@@ -5,8 +5,7 @@ import QuizEnd from '../view/QuizEnd';
 import QuizStart from '../view/QuizStart';
 import QuizView from '../view/QuizView';
 import QuizSide from '../view/QuizSide';
-import YourScores from '../presenters/yourScores';
-
+import YourScores from '../presenters/YourScores';
 import checkmark from '../pictures/checkmark.png';
 import questionmark from '../pictures/questionmark.png';
 import correctmark from '../pictures/correctmark.png';
@@ -185,7 +184,7 @@ class Quiz extends React.Component{
         // must have callback function to update state correctly, else setState is behind
         this.setState({
             selected: newSelected
-        }, function(){console.log(this.state.selected)})
+        }, function(){return this.state.selected})
     }
 
     render() {

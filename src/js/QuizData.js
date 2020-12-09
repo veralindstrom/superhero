@@ -1,148 +1,118 @@
-import React, { useEffect, useState } from 'react';
-import Quiz from './Quiz';
-import SuperheroSource from "./SuperheroSource";
-
-const Item = (id) => {
-  function generateRandom(min, max, no1, no2) {
-    var num = Math.floor(Math.random() * (max - min + 1)) + min;
-    return (num === no1|| num === no2) ? generateRandom(min, max) : num;
-}
-
-  const [item, setItem] = useState(null);
-  const [wrongItem1, setWrongItem1] = useState(null);
-  const [wrongItem2, setWrongItem2] = useState(null);
-
-  const rand1 =  generateRandom(1, 731, id, 0);
-  const rand2 =  generateRandom(1, 731, id, rand1);
-
-    useEffect(() => {
-      SuperheroSource.getSuperheroById("71").then(data=>setItem(data)).catch(err=>console.log(err));
-      SuperheroSource.getSuperheroById("63").then(data=>setWrongItem1(data)).catch(err=>console.log(err));
-      SuperheroSource.getSuperheroById("54").then(data=>setWrongItem2(data)).catch(err=>console.log(err));
-    }, []);
-    console.log("item: " + item);
-
-    if(item && wrongItem1 && wrongItem2){ 
-      console.log("item exist: " + item);
-      return <Quiz item={item} wrongItem1={wrongItem1} wrongItem2={wrongItem2}/>
-    }
-
-    return(
-      <h1>Hello</h1>
-    )
-}
-export default Item;
-
-
 
 export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
+  function checkInfo(info) {
+    const checkedInfo = [];
+    info.map(ans => {
+      if(ans === "-" || ans === "null" || ans === "") checkedInfo.push("Unknown");
+      else if(Array.isArray(ans) && ans[0] === "-") checkedInfo.push("Unknown");
+      else checkedInfo.push(ans);
+      return checkedInfo;
+    });
+    return checkedInfo;
+  }
 
-  const alter_ego = item.biography["alter-egos"];
-  const nemesis = "hej";
-  const sidekick = "hej";
-  const relatives = item.connections.relatives;
-  let eye_color = item.appearance["eye-color"];
-  if(eye_color === "-") eye_color = "Unknown";
-  const alignment = item.biography.alignment;
-  const race = item.appearance.race;
-  let place_of_birth = item.biography["place-of-birth"];
-  if(place_of_birth === "-") place_of_birth = "Unknown";
-  const work = item.work.occupation;
-  let work_base = item.work.base;
-  if(work_base === "-") place_of_birth = "Unknown";
-  const publisher = item.biography.publisher;
-  const alias = item.biography.aliases;
-  const real_name = item.biography["full-name"];
+  function generateAnswers(i) {
+    const array = [
+      i.biography["alter-egos"],
+      i.connections.relatives,
+      i.appearance["eye-color"],
+      i.biography.alignment,
+      i.appearance.race,
+      i.biography["place-of-birth"],
+      i.work.occupation,
+      i.work.base,
+      i.biography.aliases,
+      i.biography.publisher,
+      i.biography["full-name"],
+      "sidekick",
+      "nemesis"
+    ];
+    return array;
+  }
 
-  
-  let wrong_place_of_birth1 = wrongItem1.biography["place-of-birth"];
-  if(wrong_place_of_birth1 === "-") place_of_birth = "Unknown";
-  let wrong_work_base1 = wrongItem1.work.base;
-  if(wrong_work_base1 === "-") place_of_birth = "Unknown";
- 
-  let wrong_place_of_birth2 = wrongItem2.biography["place-of-birth"];
-  if(wrong_place_of_birth2  === "-") place_of_birth = "Unknown";
-  let wrong_work_base2 = wrongItem2.work.base;
-  if(wrong_work_base2 === "-") place_of_birth = "Unknown";
+  const correctAnswers = checkInfo(generateAnswers(item));
+  const wrongAnswers1 = checkInfo(generateAnswers(wrongItem1));
+  const wrongAnswers2 = checkInfo(generateAnswers(wrongItem2));
+
   
    const QuizData = [
     {
       id: 0,
-      question: "Alter ego?",
-      options: [alter_ego, wrongItem1.biography["alter-egos"], wrongItem2.biography["alter-egos"]],
-      answer: alter_ego
+      question: "Who is/are " + item.name + "s alter ego?",
+      options: [correctAnswers[0], wrongAnswers1[0], wrongAnswers2[0]],
+      answer: correctAnswers[0]
     },
     {
       id: 1,
-      question: "Relatives?",
-      options: [relatives, wrongItem2.connections.relatives, wrongItem1.connections.relatives],
-      answer: relatives
+      question: "Who is/are " + item.name + "s relatives?",
+      options: [wrongAnswers1[1], correctAnswers[1], wrongAnswers2[1]],
+      answer: correctAnswers[1]
     },
     {
       id: 2,
-      question: "Eye color?",
-      options: [eye_color, wrongItem1.appearance["eye-color"], wrongItem2.appearance["eye-color"]],
-      answer: eye_color
+      question: "What is " + item.name + "s eye color?",
+      options: [wrongAnswers1[2], wrongAnswers2[2], correctAnswers[2]],
+      answer: correctAnswers[2]
     },
     {
       id: 3,
-      question: "Alignment?",
-      options: [alignment, wrongItem1.biography.alignment, wrongItem2.biography.alignment],
-      answer: alignment
+      question: "What is " + item.name + "s alignment?",
+      options: [wrongAnswers1[3], wrongAnswers2[3], correctAnswers[3]],
+      answer: correctAnswers[3]
     },
     {
       id: 4,
-      question: "Race?",
-      options: [race, wrongItem2.appearance.race, wrongItem1.appearance.race],
-      answer: race
+      question: "What is " + item.name + "?",
+      options: [wrongAnswers2[4], correctAnswers[4], wrongAnswers1[4]],
+      answer: correctAnswers[4]
     },
     {
       id: 5,
-      question: "Place of birth",
-      options: [place_of_birth, wrong_place_of_birth1, wrong_place_of_birth2],
-      answer: place_of_birth
+      question: "Where was " + item.name + " born?",
+      options: [correctAnswers[5], wrongAnswers1[5], wrongAnswers2[5]],
+      answer: correctAnswers[5]
     },
     {
       id: 6,
-      question: "Works with?",
-      options: [work, wrongItem1.work.occupation, wrongItem2.work.occupation],
-      answer: work
+      question: "What does " + item.name + " work with?",
+      options: [correctAnswers[6], wrongAnswers1[6], wrongAnswers2[6]],
+      answer: correctAnswers[6]
     },
     {
       id: 7,
-      question: "Works at?",
-      options: [work_base, wrong_work_base2, wrong_work_base1],
-      answer: work_base
+      question: "Where does " + item.name + " work at?",
+      options: [wrongAnswers2[7], correctAnswers[7], wrongAnswers1[7]],
+      answer: correctAnswers[7]
     },
     {
       id: 8,
-      question: "Aliases",
-      options: [alias, wrongItem2.biography.aliases, wrongItem1.biography.aliases],
-      answer: alias
+      question: "Who is/are " + item.name + "s alias/es?",
+      options: [wrongAnswers2[8], wrongAnswers1[8], correctAnswers[8]],
+      answer: correctAnswers[8]
     },
     {
       id: 9,
-      question: "Publisher?",
-      options: [publisher, wrongItem1.biography.publisher, wrongItem2.biography.publisher],
-      answer: publisher
+      question: "Who published " + item.name + "?",
+      options: [correctAnswers[9], wrongAnswers1[9], wrongAnswers2[9]],
+      answer: correctAnswers[9]
     },
     {
       id: 10,
-      question: "Real name?",
-      options: [real_name, wrongItem2.biography["full-name"], wrongItem1.biography["full-name"]],
-      answer: `hell`
+      question: "Who plays the character of " + item.name + "? (Real name)",
+      options: [wrongAnswers2[10], correctAnswers[10], wrongAnswers1[10]],
+      answer: correctAnswers[10]
     },
     {
       id: 11,
-      question: "Nemesis?",
-      options: [nemesis, "vne", "huh"],
-      answer: nemesis
+      question: "Who is/are " + item.name + "s nemesis?",
+      options: [correctAnswers[11], wrongAnswers2[11], wrongAnswers1[11]],
+      answer: correctAnswers[11]
     },
     {
       id: 12,
-      question: "Side-kick?",
-      options: [sidekick, "vne", "huh"],
-      answer: sidekick
+      question: "Who is/are " + item.name + "s side-kick?",
+      options: [correctAnswers[12], wrongAnswers1[12], wrongAnswers2[12]],
+      answer: correctAnswers[12]
     } 
   ];
 
@@ -158,17 +128,3 @@ for (var i = QuizData.length - 1; i > 0; i--) {
 return QuizData.slice(0, 8); 
 }
 
-/*
-export const QuizData = shuffle(Quiz);
-
-// Re-arranges and cuts array
-function shuffle(array) { 
-   for (var i = array.length - 1; i > 0; i--) {  
-       // Generate random number  
-       var j = Math.floor(Math.random() * (i + 1));             
-       var temp = array[i]; 
-       array[i] = array[j]; 
-       array[j] = temp; 
-   }    
-   return array.slice(0, 8); 
-} */
