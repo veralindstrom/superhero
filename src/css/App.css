@@ -239,6 +239,9 @@ button {
 }
 .character:hover .character-info {
   transform: translateY(0%);
+  background-color: #fff;
+  color: #22254b;
+
 }
 header {
   background-color: #373b69;
@@ -258,3 +261,10 @@ header {
 .search:focus {
   outline: none;
 }
+
+.quiz-button{
+  
+  background-color: #fff;
+  color: #22254b;
+}
+
