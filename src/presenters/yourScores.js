@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import fire from "../util/firebase";
-import '../css/App.css';
+import React, {useState, useEffect} from 'react';
+import fire from '../util/firebase';
 import ScoreView from '../view/ScoreView';
 
-  const ScoreList = (props) => {
-      const {
-        s
-      } = props;
-
+const YourScores = (props) => {
+    const {
+        s,
+        createScore
+    } = props;
+    
     const [score,] = useState(s);
     const [scoreList, setScoreList] = useState();
 
     useEffect(() => {
+      let isSubscribed = true;
       const user = fire.auth().currentUser;
       const dbref = fire.database().ref(`all_scores/${user.uid}`);
-      let isSubscribed = true;
-
       if(isSubscribed){
         dbref.on("value", snapshot => {
         const scores = snapshot.val();
@@ -24,34 +23,26 @@ import ScoreView from '../view/ScoreView';
           scoreArr.push({ id, ...scores[id] });
         }
         setScoreList(scoreArr);
+        console.log("scoreArr:");
+        console.log(scoreArr);
         });
       }
 
-      createScore();
-
-      return () => isSubscribed = false;
-    }, []);
-
-
-    const createScore = () => {
+     // createScore(score);
       if(score){
-        const user = fire.auth().currentUser;
-        const dbref = fire.database().ref(`all_scores/${user.uid}`);
         const sc = {
           score: score,
         };
 
         dbref.push(sc);
       }
-    };
 
+      return () => isSubscribed = false;
+    }, []);
+    
     return (
-        <>
-            <ScoreView
-                scoreList={scoreList}
-            />
-        </>
+        <ScoreView scoreList={scoreList}/>
     );
 }
 
-export default ScoreList;
+export default YourScores;

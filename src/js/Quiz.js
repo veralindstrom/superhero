@@ -1,38 +1,49 @@
 import React from 'react';
-import {QuizData} from './QuizData';
-import '../css/App.css';
+import {BuildQuiz} from './QuizData';
+import '../css/Quiz.css';
 import QuizEnd from '../view/QuizEnd';
 import QuizStart from '../view/QuizStart';
 import QuizView from '../view/QuizView';
-import ScoreList from './scoreList';
+import QuizSide from '../view/QuizSide';
+import YourScores from '../presenters/yourScores';
+
+import checkmark from '../pictures/checkmark.png';
+import questionmark from '../pictures/questionmark.png';
+import correctmark from '../pictures/correctmark.png';
+import wrongmark from '../pictures/wrongmark.png';
 
 
 class Quiz extends React.Component{
-    state = {
-        userAnswer: null,
-        currentQuestion: 0,
-        options: [],
-        quizEnd: false,
-        score: 0,
-        disabled: true,
-        start: true,
-        selected: [0, 0, 0, 0, 0, 0, 0, 0]
-    }
-
-    loadQuiz = () => {
-        const {currentQuestion} = this.state;
-        this.setState(() => {
-            return {
-                number: QuizData[currentQuestion].id,
-                questions: QuizData[currentQuestion].question,
-                options: QuizData[currentQuestion].options,
-                correct: QuizData[currentQuestion].answer,
-            }
-        });
+    constructor(props) {
+        super(props);
+        this.state = {
+            QuizData: BuildQuiz(this.props.item, this.props.wrongItem1, this.props.wrongItem2),
+            question: null,
+            userAnswer: null,
+            currentQuestion: 0,
+            options: [],
+            quizEnd: false,
+            score: 0,
+            disabled: true,
+            start: true,
+            selected: [0, 0, 0, 0, 0, 0, 0, 0]
+        }
     }
 
     componentDidMount() {
         this.loadQuiz();
+    }
+    
+    loadQuiz = () => {
+        const {currentQuestion, QuizData} = this.state;
+        this.setState(() => {
+            return {
+                number: QuizData[currentQuestion].id,
+                question: QuizData[currentQuestion].question,
+                options: QuizData[currentQuestion].options,
+                correct: QuizData[currentQuestion].answer,
+            }
+        });
     }
 
     // Starts the quiz
@@ -43,16 +54,19 @@ class Quiz extends React.Component{
         })
     }
 
-    // Restarts the quiz
+    // Restarts the quiz, new quiz but same character
     reStartQuiz = () => {
-        this.loadQuiz();
         this.setState({
+            QuizData: BuildQuiz(this.props.item, this.props.wrongItem1, this.props.wrongItem2),
+            question: null,
+            userAnswer: null,
             currentQuestion: 0,
-            score: 0,
+            options: [],
             quizEnd: false,
+            score: 0,
             disabled: true,
             start: false,
-            selected: [0, 0, 0, 0, 0, 0, 0, 0],
+            selected: [0, 0, 0, 0, 0, 0, 0, 0]
         })
     }
 
@@ -70,14 +84,41 @@ class Quiz extends React.Component{
         })
     }
 
+    // Questions start at 0 up to 7 = 8 questions, 
+    // currentQuestion is the number that decides the question
+    // Only goes to questions that have been answered
+    goToQuestion = (goToQ) => {
+        if(goToQ === this.state.currentQuestion)
+            return;
+        if(this.state.selected[goToQ] !== 0){
+            this.setState({
+                currentQuestion: goToQ
+        })}
+    }
+
+    checkmarkAnswered = (ques) => {
+        if(this.state.selected[ques] !== 0) 
+            return <img src={checkmark} alt="checkmark"/>;
+        else 
+            return <img src={questionmark} alt="questionmark"/>;
+    }
+
+    markCorrect = (answ) => {
+        const correct = this.state.QuizData.map((item, index) => {return item.answer});
+        if(this.state.selected[answ] === correct[answ]) 
+            return <img src={correctmark} alt="correctmark"/>;
+        else 
+            return <img src={wrongmark} alt="wrongmark"/>; 
+    }
+
     // Updates the component
     componentDidUpdate(prevProp, prevState) {
-        const {currentQuestion} = this.state;
+        const {currentQuestion, QuizData} = this.state;
         if(this.state.currentQuestion !== prevState.currentQuestion){
             this.setState(() => {
                 return {
                     number: QuizData[currentQuestion].id,
-                    questions: QuizData[currentQuestion].question,
+                    question: QuizData[currentQuestion].question,
                     options: QuizData[currentQuestion].options,
                     correct: QuizData[currentQuestion].answer,
                     disabled: true
@@ -88,7 +129,7 @@ class Quiz extends React.Component{
 
     // Handles finished quiz
     finishQuiz = () => {
-        if(this.state.currentQuestion === QuizData.length - 1){
+        if(this.state.currentQuestion === this.state.QuizData.length - 1){
             this.setState({
                 quizEnd: true
             })
@@ -98,7 +139,7 @@ class Quiz extends React.Component{
 
     // Calculate the final score of the quiz
     finalScore = () => {
-        const correctAnswers = QuizData.map((item, index) => {return item.answer});
+        const correctAnswers = this.state.QuizData.map((item, index) => {return item.answer});
         this.setState({
             score: this.compareCorrectAnswers(this.state.selected, correctAnswers)
         })
@@ -116,6 +157,7 @@ class Quiz extends React.Component{
             for(let i=0; i<answers.length; i++) {
                 if(answers[i] === corrects[i]) {
                     result += 1;
+                    console.log(result);
                 }
             }
             return result;     
@@ -147,7 +189,7 @@ class Quiz extends React.Component{
     }
 
     render() {
-        const {questions, options, currentQuestion, userAnswer, quizEnd, start, score, disabled} = this.state;
+        const {QuizData, question, options, currentQuestion, userAnswer, quizEnd, start, score, disabled} = this.state;
 
         if(start) {
             return(
@@ -159,18 +201,24 @@ class Quiz extends React.Component{
         
         if(quizEnd) {         
             return(
-                <><ScoreList s={score} />
+                <>
+                <YourScores 
+                    s={score} 
+                />
                 <QuizEnd
                     score={score}
                     quiz={QuizData}
                     reStart={this.reStartQuiz}
-                /></>
+                    markCorrect={this.markCorrect}
+                />
+                </>
             )
         }
-        
+        if(!start){
         return(
+            <>
             <QuizView
-                questions={questions}
+                questions={question}
                 currentQuestion={currentQuestion}
                 quiz={QuizData}
                 options={options}
@@ -182,7 +230,14 @@ class Quiz extends React.Component{
                 finish={this.finishQuiz}
                 disabled={disabled}
             />
+            <QuizSide 
+                goToQuestion={this.goToQuestion}
+                quiz={QuizData}
+                check={this.checkmarkAnswered}
+            />
+            </>
         )
     }
+}
 }
 export default Quiz;
