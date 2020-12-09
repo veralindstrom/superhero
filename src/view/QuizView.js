@@ -3,7 +3,7 @@ import React from 'react';
 const QuizView = ({questions, currentQuestion, quiz, options, userAnswer, checkAnswer, selectedAnswers, prev, next, finish, disabled}) => {
 
     return(
-        <div className="App">
+        <div className="Quiz">
             <h2>{questions}</h2>
             <span> Question {currentQuestion + 1} out of {quiz.length}</span>
             {options.map(option => (
