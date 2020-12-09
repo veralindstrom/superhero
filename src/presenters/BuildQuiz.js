@@ -20,10 +20,8 @@ const Item = (props) => {
       SuperheroSource.getSuperheroById(id).then(data=>setItem(data)).catch(err=>console.log(err));
       SuperheroSource.getSuperheroById(rand1).then(data=>setWrongItem1(data)).catch(err=>console.log(err));
       SuperheroSource.getSuperheroById(rand2).then(data=>setWrongItem2(data)).catch(err=>console.log(err));
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    console.log(wrongItem1);
-    console.log(wrongItem2);
     if(item && wrongItem1 && wrongItem2)
     { 
       return <Quiz item={item} wrongItem1={wrongItem1} wrongItem2={wrongItem2}/>
