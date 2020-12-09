@@ -1,121 +1,122 @@
 
 export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
+  function checkInfo(info) {
+    const checkedInfo = [];
+    info.map(ans => {
+      if(ans === "-" || ans === "null" || ans === "") checkedInfo.push("Unknown");
+      else if(Array.isArray(ans) && ans[0] === "-") checkedInfo.push("Unknown");
+      else checkedInfo.push(ans);
+      return checkedInfo;
+    });
+    return checkedInfo;
+  }
 
-  const alter_ego = item.biography["alter-egos"];
-  const nemesis = "hej";
-  const sidekick = "hej";
-  const relatives = item.connections.relatives;
-  let eye_color = item.appearance["eye-color"];
-  if(eye_color === "-") eye_color = "Unknown";
-  const alignment = item.biography.alignment;
-  const race = item.appearance.race;
-  let place_of_birth = item.biography["place-of-birth"];
-  if(place_of_birth === "-") place_of_birth = "Unknown";
-  let work = item.work.occupation;
-  if(work === "-") work = "Unknown";
-  let work_base = item.work.base;
-  if(work_base === "-") place_of_birth = "Unknown";
-  const publisher = item.biography.publisher;
-  const alias = item.biography.aliases;
-  const real_name = item.biography["full-name"];
+  function generateAnswers(i) {
+    const array = [
+      i.biography["alter-egos"],
+      i.connections.relatives,
+      i.appearance["eye-color"],
+      i.biography.alignment,
+      i.appearance.race,
+      i.biography["place-of-birth"],
+      i.work.occupation,
+      i.work.base,
+      i.biography.aliases,
+      i.biography.publisher,
+      i.biography["full-name"],
+      "sidekick",
+      "nemesis"
+    ];
+    console.log(array);
+    return array;
+  }
 
-  
-  let wrong_place_of_birth1 = wrongItem1.biography["place-of-birth"];
-  if(wrong_place_of_birth1 === "-") place_of_birth = "Unknown";
-  let wrong_eye_color1 = wrongItem1.appearance["eye-color"];
-  if(wrong_eye_color1 === "-") wrong_eye_color1 = "Unknown";
-  let wrong_work1 = item.work.occupation;
-  if(wrong_work1 === "-") wrong_work1 = "Unknown";
-  let wrong_work_base1 = wrongItem1.work.base;
-  if(wrong_work_base1 === "-") place_of_birth = "Unknown";
- 
-  let wrong_place_of_birth2 = wrongItem2.biography["place-of-birth"];
-  if(wrong_place_of_birth2  === "-") place_of_birth = "Unknown";
-  let wrong_eye_color2 = wrongItem2.appearance["eye-color"];
-  if(wrong_eye_color2 === "-") wrong_eye_color2 = "Unknown";
-  let wrong_work2 = item.work.occupation;
-  if(wrong_work2 === "-") wrong_work2 = "Unknown";
-  let wrong_work_base2 = wrongItem2.work.base;
-  if(wrong_work_base2 === "-") place_of_birth = "Unknown";
+  const correctAnswers = checkInfo(generateAnswers(item));
+  const wrongAnswers1 = checkInfo(generateAnswers(wrongItem1));
+  const wrongAnswers2 = checkInfo(generateAnswers(wrongItem2));
+
+  console.log(correctAnswers);
+  console.log(wrongAnswers1);
+  console.log(wrongAnswers2);
   
    const QuizData = [
     {
       id: 0,
       question: "Alter ego?",
-      options: [alter_ego, wrongItem1.biography["alter-egos"], wrongItem2.biography["alter-egos"]],
-      answer: alter_ego
+      options: [correctAnswers[0], wrongAnswers1[0], wrongAnswers2[0]],
+      answer: correctAnswers[0]
     },
     {
       id: 1,
       question: "Relatives?",
-      options: [relatives, wrongItem2.connections.relatives, wrongItem1.connections.relatives],
-      answer: relatives
+      options: [wrongAnswers1[1], correctAnswers[1], wrongAnswers2[1]],
+      answer: correctAnswers[1]
     },
     {
       id: 2,
       question: "Eye color?",
-      options: [eye_color, wrong_eye_color1, wrong_eye_color2],
-      answer: eye_color
+      options: [wrongAnswers1[2], wrongAnswers2[2], correctAnswers[2]],
+      answer: correctAnswers[2]
     },
     {
       id: 3,
       question: "Alignment?",
-      options: [alignment, wrongItem1.biography.alignment, wrongItem2.biography.alignment],
-      answer: alignment
+      options: [wrongAnswers1[3], wrongAnswers2[3], correctAnswers[3]],
+      answer: correctAnswers[3]
     },
     {
       id: 4,
       question: "Race?",
-      options: [race, wrongItem2.appearance.race, wrongItem1.appearance.race],
-      answer: race
+      options: [wrongAnswers2[4], correctAnswers[4], wrongAnswers1[4]],
+      answer: correctAnswers[4]
     },
     {
       id: 5,
       question: "Place of birth",
-      options: [place_of_birth, wrong_place_of_birth1, wrong_place_of_birth2],
-      answer: place_of_birth
+      options: [correctAnswers[5], wrongAnswers1[5], wrongAnswers2[5]],
+      answer: correctAnswers[5]
     },
     {
       id: 6,
       question: "Works with?",
-      options: [work, wrong_work2, wrong_work1],
-      answer: work
+      options: [correctAnswers[6], wrongAnswers1[6], wrongAnswers2[6]],
+      answer: correctAnswers[6]
     },
     {
       id: 7,
       question: "Works at?",
-      options: [work_base, wrong_work_base2, wrong_work_base1],
-      answer: work_base
+      options: [wrongAnswers2[7], correctAnswers[7], wrongAnswers1[7]],
+      answer: correctAnswers[7]
     },
     {
       id: 8,
       question: "Aliases",
-      options: [alias, wrongItem2.biography.aliases, wrongItem1.biography.aliases],
-      answer: alias
+      options: [wrongAnswers2[8], wrongAnswers1[8], correctAnswers[8]],
+      answer: correctAnswers[8]
     },
     {
       id: 9,
       question: "Publisher?",
-      options: [publisher, wrongItem1.biography.publisher, wrongItem2.biography.publisher],
-      answer: publisher
+      options: [correctAnswers[9], wrongAnswers1[9], wrongAnswers2[9]],
+      answer: correctAnswers[9]
     },
     {
       id: 10,
       question: "Real name?",
-      options: [real_name, wrongItem2.biography["full-name"], wrongItem1.biography["full-name"]],
-      answer: `hell`
+      options: [wrongAnswers2[10], correctAnswers[10], wrongAnswers1[10]],
+      answer: correctAnswers[10]
     },
     {
       id: 11,
       question: "Nemesis?",
-      options: [nemesis, "vne", "huh"],
-      answer: nemesis
+      options: [correctAnswers[11], wrongAnswers2[11], wrongAnswers1[11]],
+      answer: correctAnswers[11]
     },
     {
       id: 12,
       question: "Side-kick?",
-      options: [sidekick, "vne", "huh"],
-      answer: sidekick
+      options: [correctAnswers[12], wrongAnswers1[12], wrongAnswers2[12]],
+      answer: correctAnswers[12]
     } 
   ];
 

@@ -22,6 +22,8 @@ const Item = (props) => {
       SuperheroSource.getSuperheroById(rand2).then(data=>setWrongItem2(data)).catch(err=>console.log(err));
     }, []);
 
+    console.log(wrongItem1);
+    console.log(wrongItem2);
     if(item && wrongItem1 && wrongItem2)
     { 
       return <Quiz item={item} wrongItem1={wrongItem1} wrongItem2={wrongItem2}/>
