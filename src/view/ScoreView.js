@@ -1,22 +1,21 @@
 import React from 'react';
-import Score from './score';
-import Quiz from '../js/Quiz';
 
 const ScoreView = (props) => {
     const {
         scoreList
     } = props;
 
+    //sort in desc order
     const scoreListArr = [];
-    scoreList ? scoreList.map((score) => scoreListArr.push(score.score)): console.log('scoreList not defined');
+    scoreList ? scoreList.map((score) => scoreListArr.push(score.score)): <h1>Loading..</h1>;
     scoreListArr.sort((a, b) => {return b-a});
     
     return (
         <div>
             <center>
             <h1>Your scores:</h1>
-            <div className="todoList">
-                <center>{scoreListArr.map((score, index) => <Score key={index} score={score} />)}</center>
+            <div className="scoreList">
+                <center>{scoreListArr.map((score, index) => <div key={index}  className="scores"><h2>{score}</h2></div>)}</center>
             </div></center>
         </div>
     );

@@ -4,8 +4,7 @@ import ScoreView from '../view/ScoreView';
 
 const YourScores = (props) => {
     const {
-        s,
-        createScore
+        s
     } = props;
     
     const [score,] = useState(s);
@@ -25,8 +24,6 @@ const YourScores = (props) => {
           scoreArr.push({ id, ...scores[id] });
         }
         setScoreList(scoreArr);
-        console.log("scoreArr:");
-        console.log(scoreArr);
         });
       }
 
@@ -40,7 +37,7 @@ const YourScores = (props) => {
       }
 
       return () => isSubscribed = false;
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
     
     return (
         <ScoreView scoreList={scoreList}/>
