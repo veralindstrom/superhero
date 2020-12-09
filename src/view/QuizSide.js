@@ -4,7 +4,7 @@ import React from 'react';
 const QuizSide = ({goToQuestion, quiz, check}) => {
 
     return(
-        <div className="Quiz">
+        <div className="Quiz Side">
             <h3> Questions: </h3>
             <ul>
                 {quiz.map((item, index) => (

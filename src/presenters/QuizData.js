@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Quiz from './Quiz';
-import SuperheroSource from "./SuperheroSource";
+import SuperheroSource from "../js/SuperheroSource";
 
 const Item = (id) => {
   function generateRandom(min, max, no1, no2) {

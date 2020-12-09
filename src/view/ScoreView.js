@@ -1,6 +1,5 @@
 import React from 'react';
 import Score from './score';
-import Quiz from '../js/Quiz';
 
 const ScoreView = (props) => {
     const {

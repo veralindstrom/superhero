@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BuildQuiz from './QuizData';
+import BuildQuiz from '../presenters/QuizData';
 
 /*
 class SuperheroSource extends Component {
