@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BuildQuiz from './QuizData';
-// hello testing
+
 /*
 class SuperheroSource extends Component {
     constructor(props) {
@@ -56,5 +56,4 @@ const SuperheroSource = {
         return this.apiCall(st); 
     }
 }
-
 export default SuperheroSource;

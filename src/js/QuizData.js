@@ -22,16 +22,18 @@ const Item = (id) => {
     }, []);
     console.log("item: " + item);
 
-    if(item && wrongItem1 && wrongItem2)
-    { console.log("item exist: " + item);
+    if(item && wrongItem1 && wrongItem2){ 
+      console.log("item exist: " + item);
       return <Quiz item={item} wrongItem1={wrongItem1} wrongItem2={wrongItem2}/>
     }
 
     return(
-      <h1>hej</h1>
+      <h1>Hello</h1>
     )
 }
 export default Item;
+
+
 
 export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
 

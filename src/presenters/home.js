@@ -16,8 +16,7 @@ const Home = ({ handleLogOut }) => {
             <Item id="71"/>
             <CharacterList/>
             <ScoreList/>
-            <AllScores/>
-           
+            <AllScores/>      
         </section>
     );
 };
