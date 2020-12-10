@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Quiz from '../js/Quiz';
+import Quiz from './Quiz';
 import SuperheroSource from "../js/SuperheroSource";
 
 const Item = (props) => {
