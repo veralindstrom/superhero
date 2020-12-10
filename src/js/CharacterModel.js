@@ -8,7 +8,6 @@ const CharacterList = () => {
 
   useEffect(() => {
     SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
-    //getCharacters(searchVal);
   }, []);
 
 
@@ -25,6 +24,8 @@ const CharacterList = () => {
     setSearchVal(e.target.value);
   };
 
+  if(characters.length < 1) return <h1>Loading...</h1>
+  else{
   return (
     <>
       <Character 
@@ -35,7 +36,7 @@ const CharacterList = () => {
         handleOnChange={handleOnChange}
       />
     </>);
-
+  }
 };
 
 export default CharacterList;
