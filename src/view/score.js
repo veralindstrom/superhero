@@ -3,7 +3,7 @@ import React from 'react';
 function Score({ score }) {
 
     return (
-        <div className="todo">
+        <div className="scores">
             <h2>{score}</h2>
         </div>
     );

@@ -1,10 +1,8 @@
 import React from 'react';
-import ScoreList from '../js/ScoreModel';
-import AllScores from './allScores';
-import Quiz from '../js/Quiz';
 import CharacterList from '../js/CharacterList';
-import SuperheroSource from '../js/SuperheroSource';
-import Item from '../js/QuizData';
+import Item from '../presenters/BuildQuiz';
+import YourScores from '../presenters/yourScores';
+import AllScores from '../presenters/allScores';
 
 const Home = ({ handleLogOut }) => {
     return (
@@ -15,8 +13,9 @@ const Home = ({ handleLogOut }) => {
             </nav>
             <Item id="71"/>
             <CharacterList/>
-            <ScoreList/>
-            <AllScores/>      
+            <YourScores/>
+            <AllScores/>
+           
         </section>
     );
 };

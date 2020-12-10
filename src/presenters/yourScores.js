@@ -4,8 +4,7 @@ import ScoreView from '../view/ScoreView';
 
 const YourScores = (props) => {
     const {
-        s,
-        createScore
+        s
     } = props;
     
     const [score,] = useState(s);
@@ -15,6 +14,8 @@ const YourScores = (props) => {
       let isSubscribed = true;
       const user = fire.auth().currentUser;
       const dbref = fire.database().ref(`all_scores/${user.uid}`);
+
+      //get scoreList
       if(isSubscribed){
         dbref.on("value", snapshot => {
         const scores = snapshot.val();
@@ -23,8 +24,6 @@ const YourScores = (props) => {
           scoreArr.push({ id, ...scores[id] });
         }
         setScoreList(scoreArr);
-        console.log("scoreArr:");
-        console.log(scoreArr);
         });
       }
 
@@ -38,7 +37,7 @@ const YourScores = (props) => {
       }
 
       return () => isSubscribed = false;
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
     
     return (
         <ScoreView scoreList={scoreList}/>

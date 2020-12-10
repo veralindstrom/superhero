@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import fire from "../util/firebase";
-import LoginView from '../view/LoginView';
-import Home from '../presenters/home';
+import Login from '../presenters/Login';
 
 const LoginModel = () => {
   const [user, setUser] = useState("");
@@ -77,32 +76,28 @@ const LoginModel = () => {
       else setUser("");
     });
   };
-
+/*
   useEffect(() => {
     authListener();
-  }, []);
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps*/
 
   return (
-    <div className="App">
-    {user ? (
-      <div>
-        <Home handleLogOut={handleLogOut} />
-      </div>
-    ) : (
-        <LoginView
-    email={email}
-    setEmail={setEmail}
-    password={password}
-    setPassword={setPassword}
-    handleLogin={handleLogin}
-    handleSignUp={handleSignUp}
-    hasAccount={hasAccount}
-    setHasAccount={setHasAccount}
-    emailError={emailError}
-    passwordError={passwordError}
-     />)}
-  </div>
-  );
+    <Login 
+    authListener={authListener}
+      user={user}
+      handleLogOut={handleLogOut} 
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      handleLogin={handleLogin}
+      handleSignUp={handleSignUp}
+      hasAccount={hasAccount}
+      setHasAccount={setHasAccount}
+      emailError={emailError}
+      passwordError={passwordError}
+    />);
+   
 }
 
-export default LoginModel;
+export default LoginModel; 

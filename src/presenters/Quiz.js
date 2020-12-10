@@ -1,11 +1,8 @@
 import React from 'react';
 import {BuildQuiz} from './QuizData';
 import '../css/Quiz.css';
-import QuizEnd from '../view/QuizEnd';
-import QuizStart from '../view/QuizStart';
-import QuizView from '../view/QuizView';
-import QuizSide from '../view/QuizSide';
-import YourScores from '../presenters/yourScores';
+
+import QuizNav from './QuizNav.js';
 
 import checkmark from '../pictures/checkmark.png';
 import questionmark from '../pictures/questionmark.png';
@@ -30,10 +27,12 @@ class Quiz extends React.Component{
         }
     }
 
+    // Starts the component
     componentDidMount() {
         this.loadQuiz();
     }
     
+    // Loads the quiz
     loadQuiz = () => {
         const {currentQuestion, QuizData} = this.state;
         this.setState(() => {
@@ -59,12 +58,11 @@ class Quiz extends React.Component{
         this.setState({
             QuizData: BuildQuiz(this.props.item, this.props.wrongItem1, this.props.wrongItem2),
             question: null,
-            userAnswer: null,
+            userAnswer: [],
             currentQuestion: 0,
             options: [],
             quizEnd: false,
             score: 0,
-            disabled: true,
             start: false,
             selected: [0, 0, 0, 0, 0, 0, 0, 0]
         })
@@ -84,9 +82,9 @@ class Quiz extends React.Component{
         })
     }
 
+    // Moves to desired question, but only goes to questions that have been answered
     // Questions start at 0 up to 7 = 8 questions, 
     // currentQuestion is the number that decides the question
-    // Only goes to questions that have been answered
     goToQuestion = (goToQ) => {
         if(goToQ === this.state.currentQuestion)
             return;
@@ -96,6 +94,7 @@ class Quiz extends React.Component{
         })}
     }
 
+    // Pictures for QuizSide
     checkmarkAnswered = (ques) => {
         if(this.state.selected[ques] !== 0) 
             return <img src={checkmark} alt="checkmark"/>;
@@ -103,6 +102,7 @@ class Quiz extends React.Component{
             return <img src={questionmark} alt="questionmark"/>;
     }
 
+    // Pictures for QuizEnd
     markCorrect = (answ) => {
         const correct = this.state.QuizData.map((item, index) => {return item.answer});
         if(this.state.selected[answ] === correct[answ]) 
@@ -121,7 +121,6 @@ class Quiz extends React.Component{
                     question: QuizData[currentQuestion].question,
                     options: QuizData[currentQuestion].options,
                     correct: QuizData[currentQuestion].answer,
-                    disabled: true
                 };
             })
         }
@@ -137,7 +136,7 @@ class Quiz extends React.Component{
         }
     }
 
-    // Calculate the final score of the quiz
+    // Gives the final score of the quiz
     finalScore = () => {
         const correctAnswers = this.state.QuizData.map((item, index) => {return item.answer});
         this.setState({
@@ -146,7 +145,7 @@ class Quiz extends React.Component{
         console.log("Correct answers: " + correctAnswers);
     }
 
-    // Compare the array of chosen answers with the correct answers
+    // Calculate the score by comparing the array of chosen answers with the correct answers
     compareCorrectAnswers = (answers, corrects) => {
         if(answers.length !== corrects.length) {
             return false;
@@ -157,19 +156,10 @@ class Quiz extends React.Component{
             for(let i=0; i<answers.length; i++) {
                 if(answers[i] === corrects[i]) {
                     result += 1;
-                    console.log(result);
                 }
             }
             return result;     
         } 
-    }
-
-    // Checks answer
-    checkAnswer = answer => {
-        this.setState({
-            userAnswer: answer,
-            disabled: false
-        })
     }
 
     // Collect selected answer in index corresponding to question
@@ -185,59 +175,42 @@ class Quiz extends React.Component{
         // must have callback function to update state correctly, else setState is behind
         this.setState({
             selected: newSelected
-        }, function(){console.log(this.state.selected)})
+        }, function(){return this.state.selected})
     }
+
+    // If question is answered to be able to move to next
+    disableNext = () => {
+        if(this.state.selected[this.state.currentQuestion] !== 0)
+            return false;
+        else
+            return true; 
+    }
+
 
     render() {
-        const {QuizData, question, options, currentQuestion, userAnswer, quizEnd, start, score, disabled} = this.state;
-
-        if(start) {
+        const {QuizData, question, options, currentQuestion, quizEnd, start, score, selected} = this.state;
             return(
-                <QuizStart
+                <QuizNav
+                    quizEnd={quizEnd}
+                    start={start}
                     startQuiz={this.startQuiz} 
-                />
-            )
-        }
-        
-        if(quizEnd) {         
-            return(
-                <>
-                <YourScores 
-                    s={score} 
-                />
-                <QuizEnd
                     score={score}
-                    quiz={QuizData}
-                    reStart={this.reStartQuiz}
+                    quizData={QuizData}
+                    reStartQuiz={this.reStartQuiz}
                     markCorrect={this.markCorrect}
+                    question={question}
+                    currentQuestion={currentQuestion}
+                    options={options}
+                    selectedAnswers={this.selectedAnswers}
+                    prev={this.prevQuestion}
+                    next={this.nextQuestion}
+                    finishQuiz={this.finishQuiz}
+                    goToQuestion={this.goToQuestion}
+                    checkmarkAnswered={this.checkmarkAnswered}
+                    disableNext={this.disableNext}
+                    selected={selected}
                 />
-                </>
             )
         }
-        if(!start){
-        return(
-            <>
-            <QuizView
-                questions={question}
-                currentQuestion={currentQuestion}
-                quiz={QuizData}
-                options={options}
-                userAnswer={userAnswer}
-                checkAnswer={this.checkAnswer}
-                selectedAnswers={this.selectedAnswers}
-                prev={this.prevQuestion}
-                next={this.nextQuestion}
-                finish={this.finishQuiz}
-                disabled={disabled}
-            />
-            <QuizSide 
-                goToQuestion={this.goToQuestion}
-                quiz={QuizData}
-                check={this.checkmarkAnswered}
-            />
-            </>
-        )
     }
-}
-}
 export default Quiz;

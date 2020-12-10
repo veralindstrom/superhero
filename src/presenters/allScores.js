@@ -12,8 +12,8 @@ const AllScores = () => {
         if(isSubscribed){ 
             allScoresRef.on('value', (snapshot) => {
                 let scoreboard = [];
-                for(let uid in snapshot.val()){
-                    const scoresRef = fire.database().ref(`all_scores/${uid}`);
+                snapshot.forEach((uid) => {
+                    const scoresRef = fire.database().ref(`all_scores/${uid.key}`);
                     scoresRef.on('value', (snapshot) => {
                         const scores = snapshot.val();
                         const scoreArr = [];
@@ -23,7 +23,7 @@ const AllScores = () => {
                         scoreboard = [...scoreArr, ...scoreboard]; //...scoreArr to seperate make each element
             
                     });
-                };
+                  });
                 setScoreBoard(scoreboard);
             });
         }

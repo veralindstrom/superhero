@@ -5,74 +5,23 @@
   font-family: "Nunito", sans-serif;
 }
 
-.addTodo {
-  text-align: center;
-  margin: 20px;
-}
-
-.addTodo input {
-  width: 50%;
-  border: none;
-  outline: none;
-  font-size: 19px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  letter-spacing: 1px;
-  margin-right: 2%;
-}
-
-.addTodo button {
-  width: 20%;
-  padding: 1%;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
-}
-
-.todoList {
+.scoreList {
+  border: 2px solid white;
   width: 60%;
-
-  margin: 2% 0 2% 0;
+  height: 350px;
   overflow-y: scroll;
   text-align: center;
-  background-color: #3a2b58;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-.todo {
+.scores {
   text-align: center;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.19);
   margin-bottom: 2%;
-  padding: 1%;
-  width: 60%;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
 .todo h2 {
   margin-bottom: 2%;
-}
-
-.todo button {
-  font-size: 20px;
-  padding: 1%;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 1%;
-}
-
-.notCompletedBtn {
-  color: rgb(150, 148, 148);
-  background-color: #3a2c5e;
-}
-
-.notCompletedBtn:hover:enabled {
-  color: rgb(150, 148, 148);
-  background-color: #3a2c5e;
-}
-
-.notCompletedBtn:hover:before {
-  content: "Not ";
-}
-
-.notCompletedBtn:hover:after {
-  content: "?";
 }
 
 button:hover:enabled {
@@ -241,8 +190,8 @@ button {
   transform: translateY(0%);
   background-color: #fff;
   color: #22254b;
-
 }
+
 header {
   background-color: #373b69;
   padding: 1rem;
@@ -259,12 +208,9 @@ header {
   padding: 0.5rem 1, 5rem;
 }
 .search:focus {
-  outline: none;
+  outline: git snone;
 }
-
-.quiz-button{
-  
+.quiz-button {
   background-color: #fff;
   color: #22254b;
 }
-
