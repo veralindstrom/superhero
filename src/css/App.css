@@ -154,8 +154,6 @@ button {
 
 .character-container {
   background-color: #22254b;
-  display: flex;
-  flex-wrap: wrap;
   text-align: center;
   border: 2px solid white;
   height: 500px;
@@ -168,24 +166,29 @@ button {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  margin: 1rem;
-  width: 250px;
+  margin: 1%;
+  width: 22%;
+  height: 50%;
+  display: inline-block;
 }
 
 .character img {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }
 .character-info {
   position: absolute;
   background-color: #fff;
   color: #22254b;
-  padding: 1rem;
+  padding: 1px;
   bottom: 0;
   left: 0;
   right: 0;
   transform: translateY(100%);
   transition: transfrom 0.3s ease-in-out;
 }
+
 .character:hover .character-info {
   transform: translateY(0%);
   background-color: #fff;
@@ -197,8 +200,9 @@ header {
   background-color: #373b69;
   padding: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
+
 .search {
   background-color: transparent;
   border: 2px solid #22254b;
