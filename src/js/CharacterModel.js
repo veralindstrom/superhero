@@ -7,7 +7,7 @@ const CharacterList = () => {
   const [searchVal, setSearchVal] = useState("");
 
   useEffect(() => {
-    SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
+    SuperheroSource.getSuperheroByName("a").then(data => setCharacters(data.results));
     //getCharacters(searchVal);
   }, []);
 
@@ -15,7 +15,7 @@ const CharacterList = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (searchVal) {
-      SuperheroSource.getSuperheroByName(searchVal).then(data=> setCharacters(data.results));
+      SuperheroSource.getSuperheroByName(searchVal).then(data => setCharacters(data.results));
 
       setSearchVal("");
     }
@@ -27,8 +27,8 @@ const CharacterList = () => {
 
   return (
     <>
-      <Character 
-      characters={characters}
+      <Character
+        characters={characters}
         setCharacters={setCharacters}
         handleOnSubmit={handleOnSubmit}
         searchVal={searchVal}
