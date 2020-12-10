@@ -28,7 +28,8 @@ const Character = (props) => {
     }
 
     if(quizstarted) return <Item id={id} />
-    else return (
+    else {
+      return (
       <>
         <header><h1>Choose Character</h1>
           <form onSubmit={handleOnSubmit}>
@@ -41,9 +42,11 @@ const Character = (props) => {
           </form>
         </header>
         <div className="character-container">
+          {characters.length < 1 && <h1>Loading...</h1>}
           {getCharacter()}
         </div>
-      </>);
+      </>)
+      }
   
   };
 
