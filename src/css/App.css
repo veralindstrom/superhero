@@ -190,6 +190,7 @@ button {
   transform: translateY(0%);
   background-color: #fff;
   color: #22254b;
+  cursor: pointer;
 }
 
 header {

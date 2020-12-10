@@ -5,8 +5,7 @@ const CharacterView = ({ name, image, id, startquiz } ) => {
     return (
 
         <div className="character">
-            <button class="character-btn"
-            >
+            <div className="character-btn">
                 <img src={image.url} alt={name} />
                 <div className="character-info">
 
@@ -15,7 +14,7 @@ const CharacterView = ({ name, image, id, startquiz } ) => {
                         onClick={()=>startquiz(id)}
                     > Start Quiz</button>
                 </div>
-            </button>
+            </div>
         </div>
     )
 
