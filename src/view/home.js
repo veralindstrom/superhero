@@ -1,8 +1,8 @@
 import React from 'react';
-import AllScores from '../presenters/AllScores';
 import CharacterList from '../js/CharacterList';
 import Item from '../presenters/BuildQuiz';
-import YourScores from '../presenters/YourScores';
+import YourScores from '../presenters/yourScores';
+import AllScores from '../presenters/allScores';
 
 const Home = ({ handleLogOut }) => {
     return (
