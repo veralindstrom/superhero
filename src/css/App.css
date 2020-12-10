@@ -158,18 +158,22 @@ button {
   border: 2px solid white;
   height: 500px;
   overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .character {
+  margin-left: 2.5%;
+}
+
+.character-btn {
   background-color: #373b69;
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   position: relative;
-  margin: 1%;
-  width: 22%;
-  height: 50%;
-  display: inline-block;
+  margin: 1rem;
+  width: 250px;
 }
 
 .character img {
