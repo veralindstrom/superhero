@@ -62,7 +62,7 @@ const CharacterList = () => {
 
 };
 
-export default CharacterList;*/
+export default CharacterList;
 import React, { useState, useEffect } from 'react';
 import SuperheroSource from './SuperheroSource';
 import Character from '../presenters/Character';
@@ -103,4 +103,4 @@ const CharacterList = () => {
 
 };
 
-export default CharacterList;
+export default CharacterList; */

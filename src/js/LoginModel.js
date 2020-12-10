@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import fire from "../util/firebase";
 import Login from '../presenters/Login';
 
@@ -37,7 +37,7 @@ const LoginModel = () => {
             setPasswordError(err.message);
             break;
           default:
-            
+
         }
       });
   };
@@ -76,16 +76,12 @@ const LoginModel = () => {
       else setUser("");
     });
   };
-/*
-  useEffect(() => {
-    authListener();
-  }, []);// eslint-disable-line react-hooks/exhaustive-deps*/
 
   return (
-    <Login 
-    authListener={authListener}
+    <Login
+      authListener={authListener}
       user={user}
-      handleLogOut={handleLogOut} 
+      handleLogOut={handleLogOut}
       email={email}
       setEmail={setEmail}
       password={password}
@@ -97,7 +93,7 @@ const LoginModel = () => {
       emailError={emailError}
       passwordError={passwordError}
     />);
-   
+
 }
 
 export default LoginModel; 

@@ -1,9 +1,6 @@
 /*import React from 'react';
-import startQuiz from '../presenters/Quiz';
 
-//const imageUrl = 'https://superheroapi.com/api/1741527979362433/70/image';
-
-const Character = ({ name, image }) => {
+const CharacterView = ({ name, image, id, startquiz } ) => {
 
     return (
 
@@ -15,7 +12,7 @@ const Character = ({ name, image }) => {
 
                     <h2>{name}</h2>
                     <button className="quiz-button"
-                        onClick={startQuiz}
+                        onClick={()=>startquiz(id)}
                     > Start Quiz</button>
                 </div>
             </button>
@@ -27,7 +24,7 @@ const Character = ({ name, image }) => {
 export default Character; */
 import React, { useState } from 'react';
 import CharacterView from '../view/CharacterView';
-import Item from './BuildQuiz';
+import Item from '../presenters/BuildQuiz';
 
 const Character = (props) => {
     const {
