@@ -1,4 +1,5 @@
 import React from 'react';
+import startQuiz from '../presenters/Quiz';
 
 //const imageUrl = 'https://superheroapi.com/api/1741527979362433/70/image';
 
