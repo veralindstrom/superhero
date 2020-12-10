@@ -3,7 +3,7 @@ import React from 'react';
 const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, prev, next, finish, disableNext, selected}) => {
 
     return(
-        <div className="Quiz">
+        <div className="Quiz View">
             <h2>{questions}</h2>
             <span> Question {currentQuestion + 1} out of {quiz.length}</span>
             {options.map(option => (
@@ -11,7 +11,6 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
                 className= {`ui floating message options ${selected[currentQuestion] === option ? "selected" : null}`}
                 onClick={() => {
                     selectedAnswers(currentQuestion, option);
-                    //this.selectedAnswers(this.state.number, option);
                     }}>
                         {option}
                 </p>

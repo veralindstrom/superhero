@@ -156,7 +156,6 @@ class Quiz extends React.Component{
             for(let i=0; i<answers.length; i++) {
                 if(answers[i] === corrects[i]) {
                     result += 1;
-                    console.log(result);
                 }
             }
             return result;     
@@ -213,5 +212,5 @@ class Quiz extends React.Component{
                 />
             )
         }
-}
+    }
 export default Quiz;
