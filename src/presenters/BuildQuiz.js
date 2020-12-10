@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Quiz from '../js/Quiz';
 import SuperheroSource from "../js/SuperheroSource";
 
-const Item = (props) => {
-  const {id} = props;
+const Item = ({id}) => {
   function generateRandom(min, max, no1, no2) {
     var num = Math.floor(Math.random() * (max - min + 1)) + min;
     return (num === no1|| num === no2) ? generateRandom(min, max) : num;

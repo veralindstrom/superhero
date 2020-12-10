@@ -1,8 +1,9 @@
 import React from 'react';
-import AllScores from '../presenters/AllScores';
-import CharacterList from '../js/CharacterList';
-import Item from '../presenters/BuildQuiz';
-import YourScores from '../presenters/YourScores';
+import AllScores from './AllScores';
+import Item from './BuildQuiz';
+import YourScores from './YourScores';
+import Character from './Character';
+import CharacterList from '../js/CharacterModel';
 
 const Home = ({ handleLogOut }) => {
     return (
@@ -11,7 +12,6 @@ const Home = ({ handleLogOut }) => {
                 <h2>Welcome</h2>
                 <button className="logoutBtn" onClick={handleLogOut}>Logout</button>
             </nav>
-            <Item id="71"/>
             <CharacterList/>
             <YourScores/>
             <AllScores/>

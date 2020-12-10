@@ -11,6 +11,7 @@ const SuperheroSource = {
     },
     getSuperheroByName(name){
         let st = "search/" + name;
+        console.log(this.apiCall(st));
         return this.apiCall(st); 
     }
 }
