@@ -30,7 +30,7 @@ const Character = (props) => {
     if(quizstarted) return <Item id={id} />
     else return (
       <>
-        <header>
+        <header><h1>Choose Character</h1>
           <form onSubmit={handleOnSubmit}>
             <input
               className="search"
