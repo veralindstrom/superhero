@@ -5,7 +5,7 @@ const QuizEnd = ({score, quiz, reStart, markCorrect, show}) => {
     return(
             <div className="Quiz End"> 
                 <h2 className="scoreDeclaration"> Final score is {score} points out of {quiz.length} </h2>
-                <table><tbody class="quizEndTable">
+                <table><tbody className="quizEndTable">
                     <tr className="tableHeaderRow">
                         <td><h3 className="tableTitles">Quiz questions:</h3></td>
                         <td></td>
