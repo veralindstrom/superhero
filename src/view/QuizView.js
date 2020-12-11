@@ -11,7 +11,6 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
                 className= {`ui floating message options ${selected[currentQuestion] === option ? "selected" : null}`}
                 onClick={() => {
                     selectedAnswers(currentQuestion, option);
-                    //this.selectedAnswers(this.state.number, option);
                     }}>
                         {option}
                 </p>

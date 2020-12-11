@@ -30,8 +30,7 @@ const QuizEnd = ({score, quiz, reStart, markCorrect, show}) => {
                 <Route render={({history}) => (
                 <button className="ui inverted button"
                 onClick={() => {history.push('/') }}
-                >
-                Exit Quiz</button>
+                > Exit Quiz </button>
                 )}/>
             </div>
     )};
