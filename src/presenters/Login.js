@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Home from './home';
 import LoginView from '../view/LoginView';
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const {
@@ -40,9 +41,9 @@ const Login = (props) => {
               hasAccount={hasAccount}
               setHasAccount={setHasAccount}
               emailError={emailError}
-              passwordError={passwordError}
-         />)}
-      </div>
+              passwordError={passwordError}/>
+              )}
+        </div>
       );
 }
 export default Login;
