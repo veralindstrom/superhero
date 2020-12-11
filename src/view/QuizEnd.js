@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 const QuizEnd = ({score, quiz, reStart, markCorrect, show}) => {
     return(
@@ -26,9 +27,12 @@ const QuizEnd = ({score, quiz, reStart, markCorrect, show}) => {
                     onClick={reStart}
                 > ReTry Quiz </button>
 
+                <Route render={({history}) => (
                 <button className="ui inverted button"
-                    onClick={reStart}
-                > Exit Quiz REMEMBER TO CHANGE </button>
+                onClick={() => {history.push('/') }}
+                >
+                Exit Quiz</button>
+                )}/>
             </div>
     )};
 export default QuizEnd;

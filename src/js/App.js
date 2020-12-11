@@ -6,7 +6,7 @@ import { AuthProvider } from '../context/Auth';
 import PrivateRoute from './PrivateRoute';
 import Home from '../presenters/home';
 import { Header } from './Header';
-import yourScores from '../presenters/YourScores';
+import YourScores from '../presenters/YourScores';
 import AllScores from '../presenters/AllScores';
 import PageNotFound from './PageNotFound';
 import Item from '../presenters/BuildQuiz';
@@ -22,7 +22,7 @@ function App() {
           <PrivateRoute exact path="/" component={Home}/>
           <PrivateRoute exact path="/quizitem/:id" component={Item}/>
           <PrivateRoute exact path="/scoreboard" component={AllScores}/>
-          <PrivateRoute exact path="/myscores" component={yourScores}/>
+          <PrivateRoute exact path="/myscores" component={YourScores}/>
           <Route path="*" component={PageNotFound}/>
         </Switch>
       </Router>
