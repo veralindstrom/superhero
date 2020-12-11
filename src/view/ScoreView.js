@@ -1,4 +1,5 @@
 import React from 'react';
+import loading from '../pictures/superLoading.gif';
 
 const ScoreView = (props) => {
     const {
@@ -7,7 +8,7 @@ const ScoreView = (props) => {
 
     //sort in desc order
     const scoreListArr = [];
-    scoreList ? scoreList.map((score) => scoreListArr.push(score.score)): <h1>Loading..</h1>;
+    scoreList ? scoreList.map((score) => scoreListArr.push(score.score)): <h1 className="loading"><img src={loading} alt="Loading..."/></h1>;
     scoreListArr.sort((a, b) => {return b-a});
     
     return (
