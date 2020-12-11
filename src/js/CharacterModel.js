@@ -7,7 +7,9 @@ const CharacterList = () => {
   const [searchVal, setSearchVal] = useState("");
 
   useEffect(() => {
-    SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
+    let isSubscribed = true;
+    if(isSubscribed) SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
+    return () => isSubscribed = false;
   }, []);
 
   const handleOnSubmit = (e) => {

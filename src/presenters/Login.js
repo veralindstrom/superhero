@@ -20,7 +20,9 @@ const Login = (props) => {
     } = props;
 
     useEffect(() => {
-      authListener();
+        let isSubscribed = true;
+        if(isSubscribed)  authListener();
+        return () => isSubscribed = false;
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
       return (

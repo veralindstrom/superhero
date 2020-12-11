@@ -7,7 +7,7 @@ const HeaderView = () =>{
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
-                        <Link to="/signup">
+                        <Link to="/">
                             <button>Homepage</button>
                         </Link>
                     </div>

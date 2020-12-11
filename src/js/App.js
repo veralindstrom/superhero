@@ -18,8 +18,7 @@ function App() {
       <Router>
         <Header/>
         <Switch>
-          <Route exact path="/signup" component={LoginModel}/>
-          <PrivateRoute exact path="/" component={Home}/>
+          <Route exact path="/" component={LoginModel}/>
           <PrivateRoute exact path="/quizitem/:id" component={Item}/>
           <PrivateRoute exact path="/scoreboard" component={AllScores}/>
           <PrivateRoute exact path="/myscores" component={YourScores}/>
