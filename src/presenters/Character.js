@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import CharacterView from '../view/CharacterView';
-import Item from './BuildQuiz';
+import { Redirect } from 'react-router-dom';
 
 const Character = (props) => {
     const {
@@ -27,7 +27,9 @@ const Character = (props) => {
       setId(ids);
     }
 
-    if(quizstarted) return <Item id={id} />
+    if(quizstarted) return (
+      <Redirect to={"/quizitem/" + id}/>
+    );
     else return (
       <>
         <header>

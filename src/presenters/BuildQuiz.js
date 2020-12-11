@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Quiz from './Quiz';
 import SuperheroSource from "../js/SuperheroSource";
+import {useParams} from 'react-router-dom';
 
-const Item = ({id}) => {
+const Item = () => {
+  const {id} = useParams();
+
   function generateRandom(min, max, no1, no2) {
     var num = Math.floor(Math.random() * (max - min + 1)) + min;
     return (num === no1|| num === no2) ? generateRandom(min, max) : num;
