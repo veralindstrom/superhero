@@ -7,7 +7,7 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
             <h2 className="questions">{questions}</h2>
             <span className="qqcounter"> Question {currentQuestion + 1} out of {quiz.length}</span>
             {options.map(option => (
-                <p key={option.id} 
+                <p key={Math.random()} 
                 className= {`ui floating message options ${selected[currentQuestion] === option ? "selected" : null}`}
                 onClick={() => {
                     selectedAnswers(currentQuestion, option);

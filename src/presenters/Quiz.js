@@ -142,7 +142,6 @@ class Quiz extends React.Component{
         this.setState({
             score: this.compareCorrectAnswers(this.state.selected, correctAnswers)
         })
-        console.log("Correct answers: " + correctAnswers);
     }
 
     // Calculate the score by comparing the array of chosen answers with the correct answers
