@@ -63,7 +63,7 @@ export default QuizNav;
 
 // Called to display the default hidden correct answers
 function show() {
-    for(var i = -1; i < 8; i++){
+    for(var i = -1; i < 6; i++){
         var x = document.getElementById(i);
         x.style.display = "block";    
     }

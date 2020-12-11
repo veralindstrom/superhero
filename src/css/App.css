@@ -225,10 +225,15 @@ header {
 }
 
 .container {
+  height: 60px;
   padding-right: 50px;
   padding-left: 50px;
   margin-right: auto;
   margin-left: auto;
+}
+.headerBut {
+  position: relative;
+  bottom: 30px;
 }
 
 header .inner-content {

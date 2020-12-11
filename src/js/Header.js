@@ -12,7 +12,7 @@ export const Header = () => {
                 <div className="inner-content">
                     <div className="brand">
                         <Link to="/">
-                            <button>Homepage</button>
+                            <button className="headerBut">Homepage</button>
                         </Link>
                     </div>
 
@@ -20,13 +20,13 @@ export const Header = () => {
 
                         <li>
                             <Link to="/scoreboard">
-                                <button>Scoreboard</button>
+                                <button className="headerBut">Scoreboard</button>
                             </Link>
                         </li>
 
                         <li>
                             <Link to="/myscores">
-                                <button>My Scores</button>
+                                <button className="headerBut">My Scores</button>
                             </Link>
                         </li>
 
