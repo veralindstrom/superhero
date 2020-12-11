@@ -101,19 +101,7 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
       question: "Who plays the character of " + item.name + "? (Real name)",
       options: [wrongAnswers2[10], correctAnswers[10], wrongAnswers1[10]],
       answer: correctAnswers[10]
-    },
-    {
-      id: 11,
-      question: "Who is/are " + item.name + "s nemesis?",
-      options: [correctAnswers[11], wrongAnswers2[11], wrongAnswers1[11]],
-      answer: correctAnswers[11]
-    },
-    {
-      id: 12,
-      question: "Who is/are " + item.name + "s side-kick?",
-      options: [correctAnswers[12], wrongAnswers1[12], wrongAnswers2[12]],
-      answer: correctAnswers[12]
-    } 
+    }
   ];
 
  
@@ -125,6 +113,6 @@ for (var i = QuizData.length - 1; i > 0; i--) {
   QuizData[j] = temp; 
 }   
 
-return QuizData.slice(0, 8); 
+return QuizData.slice(0, 6); 
 }
 
