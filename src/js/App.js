@@ -3,13 +3,13 @@ import LoginModel from './LoginModel';
 import '../css/App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from '../context/Auth';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from '../presenters/PrivateRoute';
 import Home from '../presenters/home';
-import { Header } from './Header';
 import YourScores from '../presenters/YourScores';
 import AllScores from '../presenters/AllScores';
-import PageNotFound from './PageNotFound';
+import PageNotFound from '../view/PageNotFound';
 import Item from '../presenters/BuildQuiz';
+import Header from '../presenters/Header';
 
 function App() {
  

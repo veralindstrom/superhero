@@ -15,8 +15,8 @@ const Character = (props) => {
     const [id, setId] = useState("0");
 
     function getCharacter() {
+      console.log(characters);
       if(characters){
-       
       return characters.length > 0 &&
       characters.map((character) => {
         return <CharacterView key={character.id} {...character} startquiz={startQuiz} />
