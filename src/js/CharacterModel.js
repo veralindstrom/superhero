@@ -10,7 +10,6 @@ const CharacterList = () => {
     SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
   }, []);
 
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (searchVal) {
@@ -27,7 +26,7 @@ const CharacterList = () => {
   return (
     <>
       <Character 
-      characters={characters}
+        characters={characters}
         setCharacters={setCharacters}
         handleOnSubmit={handleOnSubmit}
         searchVal={searchVal}

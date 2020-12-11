@@ -12,8 +12,7 @@ const Home = ({ handleLogOut }) => {
             </nav>
             <CharacterList/>
             <YourScores/>
-            <AllScores/>
-           
+            <AllScores/>        
         </section>
     );
 };

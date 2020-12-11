@@ -6,9 +6,9 @@ const QuizEnd = ({score, quiz, reStart, markCorrect, show}) => {
                 <h2 className="scoreDeclaration"> Final score is {score} points out of {quiz.length} </h2>
                 <table><tbody class="quizEndTable">
                     <tr className="tableHeaderRow">
-                        <td><h3>Quiz questions:</h3></td>
+                        <td><h3 className="tableTitles">Quiz questions:</h3></td>
                         <td></td>
-                        <td><div className="answers" id={-1}><h3>Correct answers: </h3></div></td>
+                        <td><div className="answers" id={-1}><h3 className="tableTitles">Correct answers: </h3></div></td>
                     </tr>
                     {quiz.map((item, index) => (
                     <tr key={index} >
