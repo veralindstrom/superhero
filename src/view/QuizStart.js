@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 const QuizStart = ({startQuiz}) => {
     return(
             <div className="Quiz Start">
-                <button className="ui inverted button"
+                <button className="ui inverted button start"
                     onClick={startQuiz}
                 > Start Quiz </button>
 
