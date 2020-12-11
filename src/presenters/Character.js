@@ -15,7 +15,6 @@ const Character = (props) => {
     const [id, setId] = useState("0");
 
     function getCharacter() {
-      console.log(characters);
       if(characters){
       return characters.length > 0 &&
       characters.map((character) => {
@@ -47,7 +46,7 @@ const Character = (props) => {
           </form>
         </header>
         <div className="character-container">
-          {characters.length < 1 && <h1>Loading...</h1>}
+          {characters && characters.length < 1 && <h1>Loading...</h1>}
           {getCharacter()}
         </div>
       </>)
