@@ -154,15 +154,19 @@ button {
 
 .character-container {
   background-color: #22254b;
-  display: flex;
-  flex-wrap: wrap;
   text-align: center;
   border: 2px solid white;
   height: 500px;
   overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .character {
+  margin-left: 2.5%;
+}
+
+.character-btn {
   background-color: #373b69;
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -173,19 +177,22 @@ button {
 }
 
 .character img {
-  max-width: 100%;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
 }
 .character-info {
   position: absolute;
   background-color: #fff;
   color: #22254b;
-  padding: 1rem;
+  padding: 1px;
   bottom: 0;
   left: 0;
   right: 0;
   transform: translateY(100%);
   transition: transfrom 0.3s ease-in-out;
 }
+
 .character:hover .character-info {
   transform: translateY(0%);
   background-color: #fff;
@@ -197,8 +204,9 @@ header {
   background-color: #373b69;
   padding: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
+
 .search {
   background-color: transparent;
   border: 2px solid #22254b;
@@ -214,4 +222,35 @@ header {
 .quiz-button {
   background-color: #fff;
   color: #22254b;
+}
+
+.container {
+  height: 60px;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.headerBut {
+  position: relative;
+  bottom: 30px;
+}
+
+header .inner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+header .nav-links {
+  padding: 30px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+header .nav-links li {
+  display: inline-block;
+  margin-right: 30px;
 }

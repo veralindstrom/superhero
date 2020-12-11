@@ -23,7 +23,7 @@ class Quiz extends React.Component{
             score: 0,
             disabled: true,
             start: true,
-            selected: [0, 0, 0, 0, 0, 0, 0, 0]
+            selected: [0, 0, 0, 0, 0, 0]
         }
     }
 
@@ -64,7 +64,7 @@ class Quiz extends React.Component{
             quizEnd: false,
             score: 0,
             start: false,
-            selected: [0, 0, 0, 0, 0, 0, 0, 0]
+            selected: [0, 0, 0, 0, 0, 0]
         })
     }
 
@@ -142,7 +142,6 @@ class Quiz extends React.Component{
         this.setState({
             score: this.compareCorrectAnswers(this.state.selected, correctAnswers)
         })
-        console.log("Correct answers: " + correctAnswers);
     }
 
     // Calculate the score by comparing the array of chosen answers with the correct answers

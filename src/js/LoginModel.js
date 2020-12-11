@@ -64,7 +64,7 @@ const LoginModel = () => {
   };
 
   const handleLogOut = () => {
-    fire.auth().signOut();
+    return fire.auth().signOut();
   };
 
   const authListener = () => {

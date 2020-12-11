@@ -10,7 +10,7 @@ const SuperheroSource = {
         return this.apiCall(id);       
     },
     getSuperheroByName(name){
-        let st = "search/" + name;
+        let st = "search/" + name; 
         return this.apiCall(st); 
     }
 }

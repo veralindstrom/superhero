@@ -7,10 +7,10 @@ const CharacterList = () => {
   const [searchVal, setSearchVal] = useState("");
 
   useEffect(() => {
-    SuperheroSource.getSuperheroByName("a").then(data => setCharacters(data.results));
-    //getCharacters(searchVal);
+    let isSubscribed = true;
+    if (isSubscribed) SuperheroSource.getSuperheroByName("a").then(data => setCharacters(data.results));
+    return () => isSubscribed = false;
   }, []);
-
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,6 @@ const CharacterList = () => {
         handleOnChange={handleOnChange}
       />
     </>);
-
 };
 
 export default CharacterList;

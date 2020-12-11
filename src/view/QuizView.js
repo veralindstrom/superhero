@@ -4,10 +4,10 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
 
     return(
         <div className="Quiz View">
-            <h2>{questions}</h2>
-            <span> Question {currentQuestion + 1} out of {quiz.length}</span>
+            <h2 className="questions">{questions}</h2>
+            <span className="qqcounter"> Question {currentQuestion + 1} out of {quiz.length}</span>
             {options.map(option => (
-                <p key={option.id} 
+                <p key={Math.random()} 
                 className= {`ui floating message options ${selected[currentQuestion] === option ? "selected" : null}`}
                 onClick={() => {
                     selectedAnswers(currentQuestion, option);
@@ -16,6 +16,7 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
                 </p>
             ))}
 
+            <div className="PrevNext">
             {currentQuestion > 0 &&
                 <button className="ui inverted button"
                     onClick={prev}
@@ -25,8 +26,9 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
                     disabled={disableNext()} 
                     onClick={next}
                 > Next </button>}
+            </div>
             {currentQuestion === quiz.length - 1 && 
-                <button onClick={finish}
+                <button className="finishBut" onClick={finish}
                 > Finish </button>}
         </div>
     )};
