@@ -29,6 +29,7 @@ const Login = (props) => {
         {user ? (
           <div>
             <Home handleLogOut={handleLogOut} />
+            <Redirect to="/signup" />
           </div>
         ) : (
             <LoginView

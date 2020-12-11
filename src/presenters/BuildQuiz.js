@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Quiz from './Quiz';
 import SuperheroSource from "../js/SuperheroSource";
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Item = () => {
   const {id} = useParams();
