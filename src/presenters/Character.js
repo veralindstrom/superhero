@@ -32,7 +32,7 @@ const Character = (props) => {
     );
     else return (
       <>
-        <header>
+        <header><h1>Choose Character</h1>
           <form onSubmit={handleOnSubmit}>
             <input
               className="search"
@@ -43,10 +43,10 @@ const Character = (props) => {
           </form>
         </header>
         <div className="character-container">
+          {characters.length < 1 && <h1>Loading...</h1>}
           {getCharacter()}
         </div>
-      </>);
-  
-  };
+      </>)
+      }
 
   export default Character;

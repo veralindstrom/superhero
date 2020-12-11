@@ -8,9 +8,7 @@ const CharacterList = () => {
 
   useEffect(() => {
     SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
-    //getCharacters(searchVal);
   }, []);
-
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -28,14 +26,13 @@ const CharacterList = () => {
   return (
     <>
       <Character 
-      characters={characters}
+        characters={characters}
         setCharacters={setCharacters}
         handleOnSubmit={handleOnSubmit}
         searchVal={searchVal}
         handleOnChange={handleOnChange}
       />
     </>);
-
 };
 
 export default CharacterList;

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Home from './home';
 import LoginView from '../view/LoginView';
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const {
@@ -28,6 +29,7 @@ const Login = (props) => {
         {user ? (
           <div>
             <Home handleLogOut={handleLogOut} />
+            <Redirect to="/signup" />
           </div>
         ) : (
             <LoginView
