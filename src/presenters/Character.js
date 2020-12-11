@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import CharacterView from '../view/CharacterView';
 import { Redirect } from 'react-router-dom';
+import loading from '../pictures/superLoading.gif';
 
 const Character = (props) => {
     const {
@@ -46,7 +47,7 @@ const Character = (props) => {
           </form>
         </header>
         <div className="character-container">
-          {characters && characters.length < 1 && <h1>Loading...</h1>}
+          {characters && characters.length < 1 && <h1 className="loading"><img src={loading} alt="Loading..."/></h1>}
           {getCharacter()}
         </div>
       </>)
