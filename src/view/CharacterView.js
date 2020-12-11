@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CharacterView = ({ name, image, id, startquiz } ) => {
-
+    
     return (
 
         <div className="character">

@@ -16,11 +16,15 @@ const Character = (props) => {
 
     function getCharacter() {
       if(characters){
+       
       return characters.length > 0 &&
-      characters.map((character) => <CharacterView key={character.id} {...character} startquiz={startQuiz} />)
+      characters.map((character) => {
+        return <CharacterView key={character.id} {...character} startquiz={startQuiz} />
+                })
       }
       else return <h1>No match found...</h1>
     }
+
 
     function startQuiz(ids){
       setQuizstarted(true);
@@ -48,5 +52,4 @@ const Character = (props) => {
         </div>
       </>)
       }
-
   export default Character;
