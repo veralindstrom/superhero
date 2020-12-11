@@ -1,7 +1,11 @@
 import React from 'react';
-import AllScores from './AllScores';
-import YourScores from './YourScores';
 import CharacterList from '../js/CharacterModel';
+import Item from '../presenters/BuildQuiz';
+import YourScores from './YourScores';
+import AllScores from './AllScores';
+import Quiz from '../presenters/Quiz';
+import Character from '../presenters/Character';
+import ScoreBoard from '../view/ScoreBoard';
 
 const Home = ({ handleLogOut }) => {
     return (
@@ -11,8 +15,6 @@ const Home = ({ handleLogOut }) => {
                 <button className="logoutBtn" onClick={handleLogOut}>Logout</button>
             </nav>
             <CharacterList/>
-            <YourScores/>
-            <AllScores/>        
         </section>
     );
 };
