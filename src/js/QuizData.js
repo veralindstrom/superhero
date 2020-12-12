@@ -1,10 +1,31 @@
+import fakeAnswers from './FakeQuizAnswers';
 
 export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
+
+  function generateRandom(min, max, no1) {
+    var num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return (num === no1) ? generateRandom(min, max) : num;
+  }
+
   function checkInfo(info) {
     const checkedInfo = [];
-    info.map(ans => {
+    info.map((ans, index) => {
       if(ans === "-" || ans === "null" || ans === "") checkedInfo.push("Unknown");
       else if(Array.isArray(ans) && ans[0] === "-") checkedInfo.push("Unknown");
+      else checkedInfo.push(ans);
+      return checkedInfo;
+    });
+    return checkedInfo;
+  }
+
+  function checkInfoW(info, correct, rndNum, wrong) {
+    const checkedInfo = [];
+    info.map((ans, index) => {
+      if(ans === "-" || ans === "null" || ans === "" || ans === correct[index] || wrong[index]) {
+        console.log(fakeAnswers[index][rndNum]);
+        checkedInfo.push(fakeAnswers[index][rndNum]);
+      }
+      else if(Array.isArray(ans) && ans[0] === "-") checkedInfo.push(fakeAnswers[index][rndNum]);
       else checkedInfo.push(ans);
       return checkedInfo;
     });
@@ -24,15 +45,16 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
       i.biography.aliases,
       i.biography.publisher,
       i.biography["full-name"],
-      "sidekick",
-      "nemesis"
     ];
     return array;
   }
 
+  const rndNum1 =  generateRandom(0, 2, 0);
+  const rndNum2 =  generateRandom(0, 2, rndNum1);
+
   const correctAnswers = checkInfo(generateAnswers(item));
-  const wrongAnswers1 = checkInfo(generateAnswers(wrongItem1));
-  const wrongAnswers2 = checkInfo(generateAnswers(wrongItem2));
+  const wrongAnswers1 = checkInfoW(generateAnswers(wrongItem1),correctAnswers, rndNum1, correctAnswers);
+  const wrongAnswers2 = checkInfoW(generateAnswers(wrongItem2), correctAnswers, rndNum2, wrongAnswers1);
 
   
    const QuizData = [
@@ -105,7 +127,7 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
   ];
 
  
-for (var i = QuizData.length - 1; i > 0; i--) {  
+for (var i = QuizData.length - 1; i > 0; i--) {
   // Generate random number  
   var j = Math.floor(Math.random() * (i + 1));             
   var temp = QuizData[i]; 

@@ -4,7 +4,7 @@ import QuizEnd from '../view/QuizEnd';
 import QuizStart from '../view/QuizStart';
 import QuizView from '../view/QuizView';
 import QuizSide from '../view/QuizSide';
-import YourScores from './YourScores';
+import YourScores from './yourScores';
 
 const QuizNav = ({quizEnd, start, startQuiz, score, quizData, reStartQuiz, markCorrect, question, 
                 currentQuestion, options, selectedAnswers, prev, next, 
