@@ -46,6 +46,8 @@ const Character = (props) => {
               className="search"
               type="search"
               placeholder="Search..."
+              onFocus={(e) => e.target.placeholder = ''}
+              onBlur={(e) => e.target.placeholder = 'Search...'}
               value={searchVal}
               onChange={handleOnChange} />
           </form>
