@@ -5,7 +5,7 @@ const ScoreBoard = (props) => {
     const {
         scoreboard
     } = props;
-    
+
     //sort in desc order
     const scoreboardArr = [];
     scoreboard ? scoreboard.map((score) => scoreboardArr.push(score.score)): <h1 className="loading"><img src={loading} alt="Loading..."/></h1>;

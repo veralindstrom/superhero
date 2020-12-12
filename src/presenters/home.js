@@ -6,7 +6,7 @@ const Home = ({ handleLogOut }) => {
         <section className="hero">
             <nav>
                 <h2>Welcome</h2>
-                <button className="logoutBtn" onClick={handleLogOut}>Logout</button>
+                <button className="logoutBtn" onClick={handleLogOut}> Logout </button>
             </nav>
             <CharacterList/>
         </section>

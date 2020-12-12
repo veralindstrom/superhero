@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import CharacterView from '../view/CharacterView';
 import { Redirect } from 'react-router-dom';
 import loading from '../pictures/superLoading.gif';
+import notExist from '../pictures/notExistHeroes.gif';
 
 const Character = (props) => {
     const {
@@ -22,7 +23,10 @@ const Character = (props) => {
         return <CharacterView key={character.id} {...character} startquiz={startQuiz} />
                 })
       }
-      else return <h1>No match found...</h1>
+      else return <div className="noFoundMatch">
+                    <h1>No match found .. Hero might not exist yet..</h1>
+                    <img src={notExist} alt=""/>
+                  </div>
     }
 
 
