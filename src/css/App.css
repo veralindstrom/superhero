@@ -346,4 +346,8 @@ header .nav-links li {
   .character img {
     height: 230px;
   }
+
+  .character-container {
+    height: 700px;
+  }
 }
