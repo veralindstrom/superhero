@@ -40,7 +40,7 @@ const Character = (props) => {
     );
     else return (
       <>
-        <header><h1>Choose Character</h1>
+        <header><h1>Choose SuperCharacter</h1>
           <form onSubmit={handleOnSubmit}>
             <input
               className="search"

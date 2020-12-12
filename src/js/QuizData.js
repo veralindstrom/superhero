@@ -9,7 +9,7 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
 
   function checkInfo(info) {
     const checkedInfo = [];
-    info.map((ans, index) => {
+    info.map((ans) => {
       if(ans === "-" || ans === "null" || ans === "") checkedInfo.push("Unknown");
       else if(Array.isArray(ans) && ans[0] === "-") checkedInfo.push("Unknown");
       else checkedInfo.push(ans);
@@ -22,7 +22,6 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
     const checkedInfo = [];
     info.map((ans, index) => {
       if(ans === "-" || ans === "null" || ans === "" || ans === correct[index] || wrong[index]) {
-        console.log(fakeAnswers[index][rndNum]);
         checkedInfo.push(fakeAnswers[index][rndNum]);
       }
       else if(Array.isArray(ans) && ans[0] === "-") checkedInfo.push(fakeAnswers[index][rndNum]);
@@ -31,6 +30,26 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
     });
     return checkedInfo;
   }
+
+  // as one array in fakeAnswers needs to have reapeated values
+  function doubleCheck(info, wrong, r1, r2) {
+    const checkedInfo = [];
+    const randNum =  generateRandom(0, 11, r1 || r2);
+    info.map((ans, index) => {
+      if(ans === wrong[index]) {
+        checkedInfo.push(fakeAnswers[index][randNum]);
+      }
+      if(checkedInfo === wrong[index]) {
+        const randNumm =  generateRandom(0, 11, randNum);
+        checkedInfo.push(fakeAnswers[index][randNumm]);
+      }
+      else checkedInfo.push(ans);
+      return checkedInfo;
+    });
+    return checkedInfo;
+  }
+
+
 
   function generateAnswers(i) {
     const array = [
@@ -49,12 +68,12 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
     return array;
   }
 
-  const rndNum1 =  generateRandom(0, 4, 0);
-  const rndNum2 =  generateRandom(0, 4, rndNum1);
+  const rndNum1 =  generateRandom(0, 11, 0);
+  const rndNum2 =  generateRandom(0, 11, rndNum1);
 
   const correctAnswers = checkInfo(generateAnswers(item));
   const wrongAnswers1 = checkInfoW(generateAnswers(wrongItem1),correctAnswers, rndNum1, correctAnswers);
-  const wrongAnswers2 = checkInfoW(generateAnswers(wrongItem2), correctAnswers, rndNum2, wrongAnswers1);
+  const wrongAnswers2 = doubleCheck(checkInfoW(generateAnswers(wrongItem2), correctAnswers, rndNum2, wrongAnswers1), wrongAnswers1, rndNum1, rndNum2);
 
   
    const QuizData = [
