@@ -1,5 +1,5 @@
 import React from 'react';
-import {BuildQuiz} from './QuizData';
+import {BuildQuiz} from '../js/QuizData';
 import '../css/Quiz.css';
 
 import QuizNav from './QuizNav.js';

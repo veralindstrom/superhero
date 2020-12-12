@@ -8,7 +8,7 @@ const CharacterList = () => {
 
   useEffect(() => {
     let isSubscribed = true;
-    if(isSubscribed) SuperheroSource.getSuperheroByName("a").then(data=> setCharacters(data.results));
+    SuperheroSource.getSuperheroByName("a").then(data=> {if(isSubscribed) setCharacters(data.results)});
     return () => isSubscribed = false;
   }, []);
 
