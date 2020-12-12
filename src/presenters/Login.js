@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Home from './home';
+import Home from './Home';
 import LoginView from '../view/LoginView';
 
 const Login = (props) => {

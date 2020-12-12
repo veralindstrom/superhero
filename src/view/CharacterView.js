@@ -8,7 +8,6 @@ const CharacterView = ({ name, image, id, startquiz } ) => {
             <div className="character-btn">
                 <img src={image.url} alt={name} />
                 <div className="character-info">
-
                     <h2>{name}</h2>
                     <button className="quiz-button"
                         onClick={()=>startquiz(id)}

@@ -4,7 +4,7 @@ import '../css/App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from '../context/Auth';
 import PrivateRoute from '../presenters/PrivateRoute';
-import Home from '../presenters/home';
+import Home from '../presenters/Home';
 import YourScores from '../presenters/YourScores';
 import AllScores from '../presenters/AllScores';
 import PageNotFound from '../view/PageNotFound';

@@ -197,6 +197,11 @@ td {
   min-height: 100vh;
 }
 
+.Start > img {
+  width: 100%;
+  padding-top: 1px;
+}
+
 @media (max-width: 500px) {
   .QuizView {
     flex-direction: column-reverse;
