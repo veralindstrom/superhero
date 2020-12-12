@@ -4,25 +4,25 @@ import QuizEnd from '../view/QuizEnd';
 import QuizStart from '../view/QuizStart';
 import QuizView from '../view/QuizView';
 import QuizSide from '../view/QuizSide';
-import YourScores from './YourScores';
+import YourScores from './yourScores';
 
-const QuizNav = ({quizEnd, start, startQuiz, score, quizData, reStartQuiz, markCorrect, question, 
-                currentQuestion, options, selectedAnswers, prev, next, 
-                finishQuiz, goToQuestion, checkmarkAnswered, disableNext, selected}) => {
+const QuizNav = ({ quizEnd, start, startQuiz, score, quizData, reStartQuiz, markCorrect, question,
+    currentQuestion, options, selectedAnswers, prev, next,
+    finishQuiz, goToQuestion, checkmarkAnswered, disableNext, selected }) => {
 
-    if(start) {
-        return(
+    if (start) {
+        return (
             <QuizStart
-                startQuiz={startQuiz} 
+                startQuiz={startQuiz}
             />
-        )   
+        )
     }
 
-    if(quizEnd) {         
-        return(
+    if (quizEnd) {
+        return (
             <div className="QuizEnd">
-                <YourScores 
-                    s={score} 
+                <YourScores
+                    s={score}
                 />
                 <QuizEnd
                     score={score}
@@ -35,8 +35,8 @@ const QuizNav = ({quizEnd, start, startQuiz, score, quizData, reStartQuiz, markC
         )
     }
 
-    if(!start){
-        return(
+    if (!start) {
+        return (
             <div className="QuizView">
                 <QuizView
                     questions={question}
@@ -50,7 +50,7 @@ const QuizNav = ({quizEnd, start, startQuiz, score, quizData, reStartQuiz, markC
                     disableNext={disableNext}
                     selected={selected}
                 />
-                <QuizSide 
+                <QuizSide
                     goToQuestion={goToQuestion}
                     quiz={quizData}
                     check={checkmarkAnswered}
@@ -63,9 +63,9 @@ export default QuizNav;
 
 // Called to display the default hidden correct answers
 function show() {
-    for(var i = -1; i < 6; i++){
+    for (var i = -1; i < 6; i++) {
         var x = document.getElementById(i);
-        x.style.display = "block";    
+        x.style.display = "block";
     }
     document.getElementById('answBut').disabled = true;
     return;
