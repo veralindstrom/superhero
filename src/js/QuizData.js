@@ -49,8 +49,8 @@ export const BuildQuiz = (item, wrongItem1, wrongItem2) =>{
     return array;
   }
 
-  const rndNum1 =  generateRandom(0, 2, 0);
-  const rndNum2 =  generateRandom(0, 2, rndNum1);
+  const rndNum1 =  generateRandom(0, 4, 0);
+  const rndNum2 =  generateRandom(0, 4, rndNum1);
 
   const correctAnswers = checkInfo(generateAnswers(item));
   const wrongAnswers1 = checkInfoW(generateAnswers(wrongItem1),correctAnswers, rndNum1, correctAnswers);
