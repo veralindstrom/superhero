@@ -29,7 +29,6 @@ const CharacterList = () => {
     <>
       <Character 
         characters={characters}
-        setCharacters={setCharacters}
         handleOnSubmit={handleOnSubmit}
         searchVal={searchVal}
         handleOnChange={handleOnChange}
