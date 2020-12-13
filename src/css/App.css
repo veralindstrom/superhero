@@ -5,8 +5,19 @@
   font-family: "Nunito", sans-serif;
 }
 
+#root {
+  height: 100%;
+}
+
+.scoreBoard {
+  background-image: url("../pictures/allHeroes.png");
+  background-color: #603bbb;
+  height: 100%;
+}
+
 .scoreList {
   border: 2px solid white;
+  background-color: rgba(189, 189, 189, 0.774);
   width: 60%;
   height: 350px;
   overflow-y: scroll;
