@@ -28,7 +28,9 @@ const QuizView = ({questions, currentQuestion, quiz, options, selectedAnswers, p
                 > Next </button>}
             </div>
             {currentQuestion === quiz.length - 1 && 
-                <button className="finishBut" onClick={finish}
+                <button className="finishBut" 
+                    disabled={disableNext()}
+                    onClick={finish}
                 > Finish </button>}
         </div>
     )};

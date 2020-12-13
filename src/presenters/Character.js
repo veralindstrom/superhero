@@ -37,6 +37,7 @@ function startQuiz(ids) {
   setId(ids);
 }
 
+<<<<<<< HEAD
 if (quizstarted) return (
   <Redirect to={"/quizitem/" + id} />
 );
@@ -61,3 +62,29 @@ else return (
   </>)
 }
 export default Character;
+=======
+    if(quizstarted) return (
+      <Redirect to={"/quizitem/" + id}/>
+    );
+    else return (
+      <>
+        <header><h1>Choose SuperCharacter</h1>
+          <form onSubmit={handleOnSubmit}>
+            <input
+              className="search"
+              type="search"
+              placeholder="Search..."
+              onFocus={(e) => e.target.placeholder = ''}
+              onBlur={(e) => e.target.placeholder = 'Search...'}
+              value={searchVal}
+              onChange={handleOnChange} />
+          </form>
+        </header>
+        <div className="character-container">
+          {characters && characters.length < 1 && <h1 className="loading"><img src={loading} alt="Loading..."/></h1>}
+          {getCharacter()}
+        </div>
+      </>)
+      }
+  export default Character;
+>>>>>>> fc5632df81978d1dbd363931a0a91c064a1606f9
