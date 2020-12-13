@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import dancing from '../pictures/dancingHeroes.gif';
 
 const QuizStart = ({startQuiz}) => {
     return(
@@ -13,6 +14,7 @@ const QuizStart = ({startQuiz}) => {
                 onClick={() => {history.push('/') }}
                 > Exit Quiz </button>
             )}/>
+            <img src={dancing} alt=""/> 
             </div>
         );
 };

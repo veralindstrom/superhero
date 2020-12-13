@@ -44,7 +44,6 @@ onerror={hideImg}
                 <img src={image.url}
                     alt={name} />
                 <div className="character-info">
-
                     <h2>{name}</h2>
                     <button className="quiz-button"
                         onClick={() => startquiz(id)}

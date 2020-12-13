@@ -1,13 +1,14 @@
 import React from 'react';
+import loading from '../pictures/superLoading.gif';
 
 const ScoreBoard = (props) => {
     const {
         scoreboard
     } = props;
-    
+
     //sort in desc order
     const scoreboardArr = [];
-    scoreboard ? scoreboard.map((score) => scoreboardArr.push(score.score)): <h1>Loading..</h1>;
+    scoreboard ? scoreboard.map((score) => scoreboardArr.push(score.score)): <h1 className="loading"><img src={loading} alt="Loading..."/></h1>;
     scoreboardArr.sort((a, b) => {return b-a});
 
     return (

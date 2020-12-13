@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Quiz from './Quiz';
 import SuperheroSource from "../js/SuperheroSource";
 import { useParams } from 'react-router-dom';
+import loading from '../pictures/superLoading.gif';
 
 const Item = () => {
   const {id} = useParams();
@@ -30,7 +31,7 @@ const Item = () => {
     }
 
     return(
-      <h1>Loading...</h1>
+      <h1 className="loading"><img src={loading} alt="Loading..."/></h1>
     )
 }
 export default Item;
