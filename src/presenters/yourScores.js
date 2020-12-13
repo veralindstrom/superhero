@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import fire from '../util/firebase';
 import ScoreView from '../view/ScoreView';
-import allHeroes from '../pictures/allHeroes.png';
 
 const YourScores = (props) => {
     const {
@@ -41,9 +40,8 @@ const YourScores = (props) => {
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
     
     return (
-        <div className="ScoreBoard">
+        <div className="scoreBoard">
             <ScoreView scoreList={scoreList}/>
-            <img src={allHeroes} alt="" />
         </div>
     );
 }

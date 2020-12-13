@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import fire from '../util/firebase';
 import ScoreBoard from '../view/ScoreBoard';
-import allHeroes from '../pictures/allHeroes.png';
 
 const AllScores = () => {
 
@@ -32,9 +31,8 @@ const AllScores = () => {
     }, []);
     
     return (
-        <div className="ScoreBoard">
+        <div className="scoreBoard">
             <ScoreBoard scoreboard = {scoreBoard} />
-            <img src={allHeroes} alt="" />
         </div>
     );
 }
