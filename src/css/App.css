@@ -17,7 +17,7 @@
 
 .scoreList {
   border: 2px solid white;
-  background-color: rgba(189, 189, 189, 0.774);
+  background-color: rgba(136, 135, 135, 0.774);
   width: 60%;
   height: 350px;
   overflow-y: scroll;
