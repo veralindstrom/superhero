@@ -5,6 +5,15 @@
   font-family: "Nunito", sans-serif;
 }
 
+.welcomePic {
+  height: 100px;
+  max-width: 315px;
+  min-width: 315px;
+  margin-left: 5px;
+  background-image: url("../pictures/superWelcome.gif");
+  background-size: 100% 100%;
+}
+
 #root {
   height: 100%;
 }
@@ -377,10 +386,10 @@ header .nav-links li {
   .hero nav img {
     max-width: 300px;
     min-width: 200px;
-    position: top left;
-    height: 80px;
+    height: 100%;
     margin-left: 5px;
   }
+
   .hero nav button {
     margin-right: 3%;
     width: 70px;

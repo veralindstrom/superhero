@@ -63,10 +63,6 @@ const LoginModel = () => {
       });
   };
 
-  const handleLogOut = () => {
-    return fire.auth().signOut();
-  };
-
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
       if (user) {
@@ -81,7 +77,6 @@ const LoginModel = () => {
     <Login 
     authListener={authListener}
       user={user}
-      handleLogOut={handleLogOut} 
       email={email}
       setEmail={setEmail}
       password={password}

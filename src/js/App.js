@@ -9,22 +9,25 @@ import AllScores from '../presenters/allScores';
 import PageNotFound from '../view/PageNotFound';
 import Item from '../presenters/BuildQuiz';
 import Header from '../presenters/Header';
+import Home from '../presenters/Home';
 
 function App() {
-
+ 
   return (
     <AuthProvider>
       <Router>
-        <Header />
+        <Header/>
         <Switch>
-          <Route exact path="/" component={LoginModel} />
-          <PrivateRoute exact path="/quizitem/:id" component={Item} />
-          <PrivateRoute exact path="/scoreboard" component={AllScores} />
-          <PrivateRoute exact path="/myscores" component={YourScores} />
-          <Route path="*" component={PageNotFound} />
+          <Route exact path="/" component={LoginModel}/>
+          <PrivateRoute exact path="/home" component={Home}/>
+          <PrivateRoute exact path="/quizitem/:id" component={Item}/>
+          <PrivateRoute exact path="/scoreboard" component={AllScores}/>
+          <PrivateRoute exact path="/myscores" component={YourScores}/>
+          <Route path="*" component={PageNotFound}/>
         </Switch>
       </Router>
     </AuthProvider>
+    
   );
 };
 
