@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
-import Home from './Home';
 import LoginView from '../view/LoginView';
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const {
       authListener,
       user,
-      handleLogOut,
       email,
       setEmail,
       password,
@@ -24,13 +23,11 @@ const Login = (props) => {
         if(isSubscribed)  authListener();
         return () => isSubscribed = false;
     }, []);// eslint-disable-line react-hooks/exhaustive-deps
-
+    
       return (
         <div className="App">
         {user ? (
-          <div>
-            <Home handleLogOut={handleLogOut} />
-          </div>
+          <Redirect to={"/home"}/>
         ) : (
             <LoginView
               email={email}

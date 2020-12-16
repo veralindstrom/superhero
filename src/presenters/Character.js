@@ -12,10 +12,9 @@ const Character = (props) => {
     handleOnChange
   } = props;
 
-
   const [quizstarted, setQuizstarted] = useState(false);
   const [id, setId] = useState("0");
-
+  
   function getCharacter() {
     if (characters) {
       return characters.length > 0 &&
@@ -58,4 +57,5 @@ function startQuiz(ids) {
         </div>
       </>)
     }
-  export default Character;
+
+export default Character;
